@@ -1,4 +1,6 @@
-# development
-Development Scripts 
+# Development
 
+## Development Scripts 
+```bash
 -python cli
+```
