@@ -1,6 +1,6 @@
 # Azure Blob - Python Example
 
-* Code: https://github.com/krazuregame/development/script/sdk/python-sample/blob/example.py
+* Code: https://github.com/krazuregame/development/tree/master/script/sdk/python-sample/blob/example.py
 
 ## 예제 설명
 다음을 순차적으로 실행한다.
