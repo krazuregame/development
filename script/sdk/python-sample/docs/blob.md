@@ -23,5 +23,5 @@ export AZURE_STORAGE_KEY="*****"
 
 예제 코드의 실행 결과는 다음과 같다
 ```bash
-.venv/bin/python samples/blob/example.py
+.venv/bin/python blob/example.py
 ```
