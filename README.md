@@ -2,5 +2,5 @@
 
 ## Development Scripts 
 ```bash
--python cli
+-TBD
 ```
