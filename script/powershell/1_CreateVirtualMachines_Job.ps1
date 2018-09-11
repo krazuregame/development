@@ -1,11 +1,11 @@
-﻿$csvpath = import-csv 'C:\VMconfig.csv'
+﻿$csvpath = import-csv 'C:\Powershell Practice\Provisioning Bulk VMs\VMconfig.csv'
 Foreach ($csv in $csvpath) {
     Start-Job -Name $csv.vmname -ScriptBlock { param ($vmName, $resourceGroup, $location, $vmSize, $vnetName, $pipname, $nicname, $nsgName, $osdiskname, $AvailabilitySetName, $disksize, $publisher, $offer, $sku, $os)
 
 #Login /w SPN   
-$tenantID = "*******************"
-$appid = "*********************"
-$pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
+$tenantID = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+$appid = "6e4dfb37-5f17-4261-b605-1d1ac371e41e"
+$pwd = Get-Content 'C:\Powershell Practice\Provisioning Bulk VMs\LoginCred.txt' | ConvertTo-SecureString
 $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
@@ -35,25 +35,32 @@ $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGr
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
 
-# Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
-$vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
 
-if($os="windows")
+if($os -eq "windows")
 {
+    # Create a virtual machine configuration
+    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+    $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
     $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $vmName -Credential $oscred -ProvisionVMAgent
+    $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
+    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+    
+    # Create a virtual machine
+    New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 }
 
-if($os="linux")
+if($os -eq "linux")
 {
+    # Create a virtual machine configuration
+    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+    $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
     $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName $vmName -Credential $oscred
+    $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
+    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+    # Create a virtual machine
+    New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 }
-
-$vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
-$vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
-
-# Create a virtual machine
-New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 # Get VM status for Slack alert
 $vmstatus = Get-AzureRmVM -ResourceGroupName "$resourceGroup" -Name "$vmName" -Status
