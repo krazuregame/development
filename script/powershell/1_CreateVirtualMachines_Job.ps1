@@ -80,7 +80,7 @@ if($vmstatus.Statuses[0].Code -eq "ProvisioningState/succeeded")
        $webhook = Invoke-WebRequest -UseBasicParsing `
         -Body (ConvertTo-Json -Compress -InputObject $payload) `
         -Method Post `
-        -Uri "https://hooks.slack.com/services/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"
+        -Uri "https://hooks.slack.com/services/**************"
     }
 else
     {
@@ -94,7 +94,7 @@ else
        $webhook = Invoke-WebRequest -UseBasicParsing `
         -Body (ConvertTo-Json -Compress -InputObject $payload) `
         -Method Post `
-        -Uri "https://hooks.slack.com/services/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"
+        -Uri "https://hooks.slack.com/services/**************"
 
 
     }
@@ -103,5 +103,4 @@ else
 } -ArgumentList $csv.vmName, $csv.resourceGroup, $csv.location, $csv.vmSize, $csv.vnetName, $csv.pipname, $csv.nicname, $csv.nsgName, $csv.osdiskname, $csv.AvailabilitySetName, $csv.disksize, $csv.publisher, $csv.offer, $csv.sku, $csv.os
 
 } 
-
 
