@@ -1,11 +1,11 @@
-﻿$csvpath = import-csv 'C:\Powershell Practice\Provisioning Bulk VMs\VMconfig.csv'
+﻿$csvpath = import-csv 'C:\VMconfig.csv'
 Foreach ($csv in $csvpath) {
     Start-Job -Name $csv.vmname -ScriptBlock { param ($vmName, $resourceGroup, $location, $vmSize, $vnetName, $pipname, $nicname, $nsgName, $osdiskname, $AvailabilitySetName, $disksize, $publisher, $offer, $sku, $os)
 
 #Login /w SPN   
-$tenantID = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-$appid = "6e4dfb37-5f17-4261-b605-1d1ac371e41e"
-$pwd = Get-Content 'C:\Powershell Practice\Provisioning Bulk VMs\LoginCred.txt' | ConvertTo-SecureString
+$tenantID = "************************"
+$appid = "************************"
+$pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
 $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
