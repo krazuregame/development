@@ -1,0 +1,12 @@
+# Python
+*.pyc
+
+# Editors
+.idea
+
+# Coverage
+.coverage
+htmlcov/
+
+Pipfile.lock
+requirements.txt

@@ -1,0 +1,2164 @@
+[
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net/"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F2s_v2"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-BTZ/providers/Microsoft.Compute/virtualMachines/TKG-BTZ-BTVM",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-BTZ-BTVM",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-BTZ/providers/Microsoft.Network/networkInterfaces/tkg-qaz-qavm926",
+          "primary": true,
+          "resourceGroup": "RG-TKG-BTZ"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadminbt",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-BTZ-BTVM",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-BTZ",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-BTZ/providers/Microsoft.Compute/disks/TKG-BTZ-BTVM_OsDisk_1_18826de94d2c4a3ca9a72382f8f957b3",
+          "resourceGroup": "RG-TKG-BTZ",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "TKG-BTZ-BTVM_OsDisk_1_18826de94d2c4a3ca9a72382f8f957b3",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "ae316f0d-5a77-4d41-b040-fe565ac7c5bb",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-DEV/providers/Microsoft.Compute/virtualMachines/TKG-DEV-DEVVM",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-DEV-DEVVM",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-DEV/providers/Microsoft.Network/networkInterfaces/tkg-dev-devvm775",
+          "primary": null,
+          "resourceGroup": "RG-TKG-DEV"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmindev",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-DEV-DEVVM",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-DEV",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-DEV/providers/Microsoft.Compute/disks/TKG-DEV-DEVVM_OsDisk_1_484243b6f2a64ed7acc9c7d04477c1d1",
+          "resourceGroup": "RG-TKG-DEV",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "TKG-DEV-DEVVM_OsDisk_1_484243b6f2a64ed7acc9c7d04477c1d1",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "fd335069-9a7c-4140-bf01-7211c116193f",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-CHNL",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-CHNL01",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-CHNL01",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-CHNL01",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-CHNL01",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-CHNL01/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-CHNL01",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-CHNL01",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-CHNL01",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-CHNL01",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "5240f2d8-7294-4272-8c18-6a93df6593c7",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-CHNL",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-CHNL02",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-CHNL02",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-CHNL02",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-CHNL02",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-CHNL02/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-CHNL02",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-CHNL02",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-CHNL02",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-CHNL02",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "f25442b1-0f26-4be6-af0d-6ea0e6219ee6",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME01",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME01",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME01",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-GAME01",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME01/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME01",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-GAME01",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME01",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-GAME01",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "47c4a41e-9738-4a3c-bf59-892e9aa7307c",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME02",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME02",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME02",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-GAME02",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME02/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME02",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-GAME02",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME02",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-GAME02",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "c5fdc22b-185b-4fc6-ac94-d22cf5aaf3f9",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME03",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME03",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME03",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-GAME03",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME03/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME03",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-GAME03",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME03",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-GAME03",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "65f8b0a6-006d-4251-a928-54f9eede9908",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME04",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME04",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME04",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-GAME04",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME04/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME04",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-GAME04",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME04",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-GAME04",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "8d08037e-4865-4b07-a02e-2d64c981a5df",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME05",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME05",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME05",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-GAME05",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME05/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME05",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-GAME05",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME05",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-GAME05",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "cadd2ae4-30fa-4e0a-94b8-8b6011c905a3",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME06",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME06",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME06",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": true,
+      "computerName": "TKG-PRD-GAME06",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": null,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME06",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": null
+          },
+          "name": "DATADISK-TKG-PRD-GAME06",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": null,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME06",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": null
+        },
+        "name": "OSDISK-TKG-PRD-GAME06",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "f0b293c1-9172-4825-9110-3cfb46badc75",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME07",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME07",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME07",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": true,
+      "computerName": "TKG-PRD-GAME07",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": null,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME07",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": null
+          },
+          "name": "DATADISK-TKG-PRD-GAME07",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": null,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME07",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": null
+        },
+        "name": "OSDISK-TKG-PRD-GAME07",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "a1ed2197-2d27-405a-a048-7f5621ee0414",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME08",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME08",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME08",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": true,
+      "computerName": "TKG-PRD-GAME08",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": null,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME08",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": null
+          },
+          "name": "DATADISK-TKG-PRD-GAME08",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": null,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME08",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": null
+        },
+        "name": "OSDISK-TKG-PRD-GAME08",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "c29b97ef-488a-4c03-bf1b-803f53bb67cc",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME09",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME09",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME09",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": true,
+      "computerName": "TKG-PRD-GAME09",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": null,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME09",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": null
+          },
+          "name": "DATADISK-TKG-PRD-GAME09",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": null,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME09",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": null
+        },
+        "name": "OSDISK-TKG-PRD-GAME09",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "66598167-2f87-46af-a327-513df40585a9",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-GAME",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F8s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-GAME10",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-GAME10",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-GAME10",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": true,
+      "computerName": "TKG-PRD-GAME10",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": null,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-GAME10",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": null
+          },
+          "name": "DATADISK-TKG-PRD-GAME10",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": null,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-GAME10",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": null
+        },
+        "name": "OSDISK-TKG-PRD-GAME10",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "2eba763c-b6c1-4c32-8fec-a201bbd5d700",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_B2s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-MGMT-GT",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-MGMT-GT",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-MGMT-GT",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-MGMT-GT",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": null,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/TKG-PRD-MGMT-GT_OsDisk_1_9be3d79e38004a949ab3ef09ce5171a2",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": null
+        },
+        "name": "TKG-PRD-MGMT-GT_OsDisk_1_9be3d79e38004a949ab3ef09ce5171a2",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "a74bee69-6552-41e2-91e7-19c99d02a475",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-MGMT01",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-MGMT01",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-MGMT01",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-MGMT01",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-MGMT01/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-MGMT01",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-MGMT01",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-MGMT01",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-MGMT01",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "399437eb-b66d-40b5-81ee-99f686d09f35",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_B2s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-MGMTGTP",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-MGMTGTP",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/tkg-prd-mgmtgtp358",
+          "primary": null,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-MGMTGTP",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/TKG-PRD-MGMTGTP_OsDisk_1_b5e515b1d48940e1a35c9616e60282e9",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "TKG-PRD-MGMTGTP_OsDisk_1_b5e515b1d48940e1a35c9616e60282e9",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "ad7023cb-9ec6-4f81-870e-97c042326fce",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net/"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_D2s_v3"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-Monitor",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-Monitor",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/tkg-prd-monitor523",
+          "primary": null,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-Monitor",
+      "customData": null,
+      "linuxConfiguration": {
+        "disablePasswordAuthentication": false,
+        "provisionVmAgent": null,
+        "ssh": null
+      },
+      "secrets": [],
+      "windowsConfiguration": null
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "ReadOnly",
+          "createOption": "Attach",
+          "diskSizeGb": 1020,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/Data-Monitor-01",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "Data-Monitor-01",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "CentOS",
+        "publisher": "OpenLogic",
+        "sku": "7.3",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 30,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/TKG-PRD-Monitor_OsDisk_1_af6305b989f849728a88a33cdc978488",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "TKG-PRD-Monitor_OsDisk_1_af6305b989f849728a88a33cdc978488",
+        "osType": "Linux",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "52e61aa9-cc53-40a5-bfa3-6ca913248f6b",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-RAID",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-RAID01",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-RAID01",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-RAID01",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-RAID01",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-RAID01/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-RAID01",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-RAID01",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-RAID01",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-RAID01",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "2fdc5afc-29ca-4465-ad2b-20338f53d18f",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-RAID",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-RAID02",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-RAID02",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-RAID02",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-RAID02",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-RAID02/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-RAID02",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-RAID02",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-RAID02",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-RAID02",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "f0b7f745-c271-4d9d-8645-61e03405925e",
+    "zones": null
+  },
+  {
+    "availabilitySet": {
+      "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/availabilitySets/AVS-RAID",
+      "resourceGroup": "RG-TKG-PRD"
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://tkgdiagstorage01.blob.core.windows.net"
+      }
+    },
+    "hardwareProfile": {
+      "vmSize": "Standard_F4s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-RAID03",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-PRD-RAID03",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Network/networkInterfaces/NIC-TKG-PRD-RAID03",
+          "primary": true,
+          "resourceGroup": "RG-TKG-PRD"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadmintk",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-PRD-RAID03",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-PRD",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": null,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/virtualMachines/TKG-PRD-RAID03/extensions/IaaSDiagnostics",
+        "instanceView": null,
+        "location": null,
+        "name": null,
+        "protectedSettings": null,
+        "provisioningState": null,
+        "publisher": null,
+        "resourceGroup": "RG-TKG-PRD",
+        "settings": null,
+        "tags": null,
+        "type": null,
+        "typeHandlerVersion": null,
+        "virtualMachineExtensionType": null
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "caching": "None",
+          "createOption": "Attach",
+          "diskSizeGb": 255,
+          "image": null,
+          "lun": 0,
+          "managedDisk": {
+            "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/DATADISK-TKG-PRD-RAID03",
+            "resourceGroup": "RG-TKG-PRD",
+            "storageAccountType": "Premium_LRS"
+          },
+          "name": "DATADISK-TKG-PRD-RAID03",
+          "vhd": null,
+          "writeAcceleratorEnabled": null
+        }
+      ],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-PRD/providers/Microsoft.Compute/disks/OSDISK-TKG-PRD-RAID03",
+          "resourceGroup": "RG-TKG-PRD",
+          "storageAccountType": "Premium_LRS"
+        },
+        "name": "OSDISK-TKG-PRD-RAID03",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": {},
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "c200c666-e06a-44c5-bf3c-0da6f60e36d5",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": null,
+    "hardwareProfile": {
+      "vmSize": "Standard_F2s"
+    },
+    "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-QAZ/providers/Microsoft.Compute/virtualMachines/TKG-QAZ-QAVM",
+    "identity": null,
+    "instanceView": null,
+    "licenseType": null,
+    "location": "koreasouth",
+    "name": "TKG-QAZ-QAVM",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-QAZ/providers/Microsoft.Network/networkInterfaces/tkg-qaz-qavm164",
+          "primary": null,
+          "resourceGroup": "RG-TKG-QAZ"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "spadminqa",
+      "allowExtensionOperations": null,
+      "computerName": "TKG-QAZ-QAVM",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "RG-TKG-QAZ",
+    "resources": null,
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 127,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/b8a9fc0d-c303-4eff-9ef3-70428afdc5c2/resourceGroups/RG-TKG-QAZ/providers/Microsoft.Compute/disks/TKG-QAZ-QAVM_OsDisk_1_860035015ef640a7a05d30d06fd1fb58",
+          "resourceGroup": "RG-TKG-QAZ",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "TKG-QAZ-QAVM_OsDisk_1_860035015ef640a7a05d30d06fd1fb58",
+        "osType": "Windows",
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "36900d5b-d0df-4447-a56e-ab600efe9eb1",
+    "zones": null
+  }
+]
