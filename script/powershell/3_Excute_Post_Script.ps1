@@ -28,7 +28,7 @@
 
 $csvpath = import-csv 'C:\VMconfig.csv'
 foreach ($csv in $csvpath){
-    Start-Job -Name $vmName { 
+    Start-Job -Name $csv.vmName { 
         param ($vmName, $resourceGroup, $location, $os) 
 
         $tenantID = "**************************"
