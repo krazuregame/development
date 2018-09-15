@@ -1,4 +1,3 @@
-# 스크립트 리스트
 ## 0_Create_SPN.ps1
 ## 0_SPN_Login.ps1
 ## 1_Bulk_Infrastructure_Creation_CSV.ps1
