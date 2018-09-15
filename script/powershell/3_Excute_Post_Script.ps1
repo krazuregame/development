@@ -1,4 +1,20 @@
-﻿#Storage Account has script for after-script
+﻿<#   
+================================================================================ 
+ Name: Excute_Post_Script.ps1 
+ Purpose: Post Script Excution Using Azure VM Extension 
+ Author: molee
+ Description: This script is for excuting a post(custom) script using Azure VM extension & Powershell. 
+ Limitations/Prerequisite:
+    * Need "VMconfig.csv" file for servernames
+    * Must Run PowerShell (or ISE)  
+    * Requires PowerShell Azure Module
+    * Need Slack Application URI (if you don't want to be alerted, just remove slack part from this script)
+    * 참고: https://api.slack.com/incoming-webhooks
+ ================================================================================ 
+#>
+
+
+#Storage Account has script for after-script
 #Powershell(Windows) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScript.ps1
 #Bash Script(Linux) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptLinux.sh
           
@@ -10,19 +26,19 @@
 #Set-AzureRmVMExtension -ResourceGroupName $resourceGroup -Location $location -VMName $vmName -Name $winscriptName -Publisher "Microsoft.Compute" -Type "CustomScriptExtension" `
 #-TypeHandlerVersion 1.9 -Settings $winSettings -ProtectedSettings $winProtectedSettings    
 
-$csvpath = import-csv 'C:\VMconfig.csv'
+$csvpath = import-csv 'C:\Powershell Practice\Provisioning Bulk VMs\VMconfig.csv'
 foreach ($csv in $csvpath){
     Start-Job -Name $csv.vmName { 
         param ($vmName, $resourceGroup, $location, $os) 
 
         $tenantID = "72f988bf-86f1-41af-91ab-2d7cd011db47"
         $appid = "6e4dfb37-5f17-4261-b605-1d1ac371e41e"
-        $pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
+        $pwd = Get-Content 'C:\Powershell Practice\Provisioning Bulk VMs\LoginCred.txt' | ConvertTo-SecureString
         $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
         Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
         $storageAccountName = "moonsunscripts"
-        $storageAccountKey = "******************************"
+        $storageAccountKey = "VGXNEcGChWwA8H4bx1vMVSvBPAe32jX7GRXja3+xTT9WNgRM3XE0GSp8fo4rOc4YrvZQ8h/f/BmKchXEyiGRvA=="
 
         #Shell
         $linuxuri = "https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptLinux.sh"
@@ -73,7 +89,7 @@ foreach ($csv in $csvpath){
                 $webhook = Invoke-WebRequest -UseBasicParsing `
                     -Body (ConvertTo-Json -Compress -InputObject $payload) `
                     -Method Post `
-                    -Uri "https://hooks.slack.com/services/******************************"
+                    -Uri "https://hooks.slack.com/services/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"
             }
         
             else
@@ -88,7 +104,7 @@ foreach ($csv in $csvpath){
                  $webhook = Invoke-WebRequest -UseBasicParsing `
                     -Body (ConvertTo-Json -Compress -InputObject $payload) `
                     -Method Post `
-                    -Uri "https://hooks.slack.com/services/******************************"
+                    -Uri "https://hooks.slack.com/services/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"
             }
   
         }
