@@ -1,4 +1,20 @@
-﻿#Storage Account has script for after-script
+<#   
+================================================================================ 
+ Name: Excute_Post_Script.ps1 
+ Purpose: Post Script Excution Using Azure VM Extension 
+ Author: molee
+ Description: This script is for excuting a post(custom) script using Azure VM extension & Powershell. 
+ Limitations/Prerequisite:
+    * Need "VMconfig.csv" file for servernames
+    * Must Run PowerShell (or ISE)  
+    * Requires PowerShell Azure Module
+    * Need Slack Application URI (if you don't want to be alerted, just remove slack part from this script)
+    * 참고: https://api.slack.com/incoming-webhooks
+ ================================================================================ 
+#>
+
+
+#Storage Account has script for after-script
 #Powershell(Windows) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScript.ps1
 #Bash Script(Linux) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptLinux.sh
           
