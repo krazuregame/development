@@ -79,11 +79,11 @@ foreach ($csv in $csvpath){
         {       
             if($status.ProvisioningState -eq "Succeeded")
             {
-                Write-Host "'$scriptName' is successfully excuted @ '$vmName'. Just notificated to Slack channel!"
+                Write-Host "CustomScript is successfully excuted @ '$vmName'. Just notificated to Slack channel!"
         
                 $payload = 
                 @{
-                    "text" = "'$scriptName' is successfully excuted @ '$vmName' :) `n Status: Succeeded `n Time: $getdate"
+                    "text" = "CustomScript is successfully excuted @ '$vmName' :) `n Status: Succeeded `n Time: $getdate"
                  }
  
                 $webhook = Invoke-WebRequest -UseBasicParsing `
@@ -94,11 +94,11 @@ foreach ($csv in $csvpath){
         
             else
             {
-                Write-Host "'$scriptName' is failed to excute @ '$vmName'. Just notificated to Slack channel!"
+                Write-Host "CustomScript is failed to excute @ '$vmName'. Just notificated to Slack channel!"
         
                 $payload = 
                 @{
-                    "text" = "'$scriptName' execution is failed :( `n Status: Failed `n Time: $getdate"
+                    "text" = "CustomScript execution is failed :( `n Status: Failed `n Time: $getdate"
                  }
  
                  $webhook = Invoke-WebRequest -UseBasicParsing `
