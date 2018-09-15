@@ -14,7 +14,7 @@
 #>
 
 
-#Storage Account has script for after-script
+#Storage Account has script for post-script
 #Powershell(Windows) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScript.ps1
 #Bash Script(Linux) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptLinux.sh
           
