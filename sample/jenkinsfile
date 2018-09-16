@@ -31,7 +31,7 @@ pipeline {
             steps {
                 println "Deploy Started"
                 script {
-                    publicipadress = input message: 'Define the deploy host', parameters: [string(defaultValue: '', description: '', name: 'publicip'))]
+                    publicipadress = input message: 'Define the deploy host', parameters: [string(defaultValue: '', description: '', name: 'publicip')]
                     echo publicipadress
                 }
                 println "Deploy End"
