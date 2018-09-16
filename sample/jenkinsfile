@@ -9,12 +9,14 @@ pipeline {
       }
       stage('Test') {
           steps {
-              //
+              println "Build Started"
+              println "Build End"
           }
       }
       stage('Deploy') {
           steps {
-              //
+              println "Build Started"
+              println "Build End"
           }
       }
   }
