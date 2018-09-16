@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 println "Test Started"
-                 script {
+                script {
                     myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Proceed Provision\nSkip Provision', description: '', name: 'Stage')]
                 }
                 echo myStage
@@ -30,16 +30,23 @@ pipeline {
         stage('Deploy') {
             steps {
                 println "Deploy Started"
+                script {
+                    publicipadress = input message: 'Define the deploy host', parameters: [string(defaultValue: '', description: '', name: 'publicip'))]
+                    echo publicipadress
+                }
                 println "Deploy End"
             }
         }
     }
     post {
-        success {
+        always {
+            echo 'Rose Job End'
+        }
+        /*success {
             slackSend channel: '#ops-room',
                 color: 'good',
                 message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
-        }
+        }*/
         failure {
             mail to: 'cosmos0703@gmail.com',
                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
