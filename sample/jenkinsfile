@@ -10,20 +10,20 @@ pipeline {
         stage('Test') {
             steps {
                 println "Test Started"
+                 script {
+                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Proceed Provision\nSkip Provision', description: '', name: 'Stage')]
+                }
+                echo myStage
                 println "Test End"
             }
         }
         stage('Provision') {
+            when {
+                expression { myStage == 'Proceed Provision' }
+            }
             steps {
                 println "Provision Started"
-                script {
-                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Proceed Provision\nSkip Provision', description: '', name: 'Stage')]
-                }
-                echo myStage
-                when {
-                    expression {myStage == 'Proceed Provision'}
-                    sh "script -qc 'su cosmos /home/cosmos/git/ansible-playbooks/provision.sh' | tail -n +2"
-                }
+                sh "script -qc 'su cosmos /home/cosmos/git/ansible-playbooks/provision.sh' | tail -n +2"
                 println "Provision End"
             }
         }
