@@ -23,7 +23,7 @@ pipeline {
 
               sh 'ls -al'
               sh 'pwd'
-              sh '/home/cosmos/git/ansible-playbooks/provision.sh'
+              script -qc 'su cosmos /home/cosmos/git/ansible-playbooks/provision.sh' | tail -n +2
 
               println "Provision End"
           }
