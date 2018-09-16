@@ -9,19 +9,28 @@ pipeline {
       }
       stage('Test') {
           steps {
-              println "Build Started"
+              println "Test Started"
+              println "Test End"
+        }
+      }
+      stage('Provision') {
+          steps {
+              println "Provision Started"
               script {
-                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Stage1\nStage2\nStage3', description: '', name: 'Stage')]
+                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Proceed Provision\nSkip Provision', description: '', name: 'Stage')]
               }
               echo myStage
-              println "Build End"
-        }
+
+              sh 'ls -al'
+              sh 'pwd'
+              println "Provision End"
+          }
       }
       stage('Deploy') {
           steps {
-              println "Build Started"
+              println "Deploy Started"
               sh 'ls -al'
-              sh 'pwd'
+              sh 'ansible --help'
               println "Build End"
           }
       }
