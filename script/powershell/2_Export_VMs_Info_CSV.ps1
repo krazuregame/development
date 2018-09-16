@@ -1,5 +1,28 @@
-﻿#Login SPN or Login with Crdentials
+﻿<#   
+================================================================================ 
+ Name: Export_VMs_Info_CSV.ps1 
+ Purpose: Export all VMs info from Azure Subscription 
+ Author: molee
+ Description: This script is for exporting all Azure VMs information to CSV file using Powershell. 
+ Limitations/Prerequisite:
+    * Modify last line for output file path  
+    * Must Run PowerShell (or ISE)  
+    * Requires PowerShell Azure Module
+ ================================================================================ 
+#>
+
+
+#Login with Context
 Login-AzureRmAccount
+
+<#Or SPN Login
+$tenantID = "*************************"
+$appid = "*************************"
+$pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
+$cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
+Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
+#>
+
 
 $vms = Get-AzureRmVM 
 $obj = @()

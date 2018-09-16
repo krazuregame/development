@@ -1,8 +1,23 @@
-﻿#Login Azure account using ID/PW
+﻿<#   
+================================================================================ 
+ Name: Create_SPN.ps1 
+ Purpose: Service Principal Credential Creation 
+ Author: molee
+ Description: This script is for creating Azure Service Principal Credential
+ Limitations/Prerequisite:
+    * Replace *(Star) with your information
+    * Login with the credential(txt file) you create
+    * Must Run PowerShell (or ISE)  
+    * Requires PowerShell Azure Module
+ ================================================================================ 
+#>
+
+
+#Login Azure account using ID/PW
 Login-AzureRmAccount
 
 #Set a subscription info. you want to use
-$id = Get-AzureRmSubscription -SubscriptionId ************************
+$id = Get-AzureRmSubscription -SubscriptionId "*************************"
 
 #Print the subscription info.
 $id.Name
@@ -16,7 +31,7 @@ $password = [System.Web.Security.Membership]::GeneratePassword(16,3)
 $securepassword = $password | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File "C:\LoginCred.txt"
 $securepassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
-$spn = "login_cred_moonsun"
+$spn = "SPN_Login"
 $homepage = "http://localhost/$spn"
 $identifierUri = $homepage
 
