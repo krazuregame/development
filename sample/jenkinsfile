@@ -20,7 +20,8 @@ pipeline {
       stage('Deploy') {
           steps {
               println "Build Started"
-              sh 'ansible --version'
+              sh 'ls -al'
+              sh 'which ansible'
               println "Build End"
           }
       }
