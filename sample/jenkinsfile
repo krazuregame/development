@@ -20,6 +20,7 @@ pipeline {
       stage('Deploy') {
           steps {
               println "Build Started"
+              sh 'ansible --version'
               println "Build End"
           }
       }
