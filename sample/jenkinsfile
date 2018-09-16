@@ -1,50 +1,51 @@
 pipeline {
-  agent any
-  stages {
-      stage('Build') {
-          steps {
-              println "Build Started"
-              println "Build End"
-          }
-      }
-      stage('Test') {
-          steps {
-              println "Test Started"
-              println "Test End"
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                println "Build Started"
+                println "Build End"
+            }
         }
-      }
-      stage('Provision') {
-          steps {
-              println "Provision Started"
-              script {
+        stage('Test') {
+            steps {
+                println "Test Started"
+                println "Test End"
+            }
+        }
+        stage('Provision') {
+            steps {
+                println "Provision Started"
+                script {
                     myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Proceed Provision\nSkip Provision', description: '', name: 'Stage')]
-              }
-              echo myStage
-
-              sh 'ls -al'
-              sh 'pwd'
-              sh "script -qc 'su cosmos /home/cosmos/git/ansible-playbooks/provision.sh' | tail -n +2"
-
-              println "Provision End"
-          }
-      }
-      stage('Deploy') {
-          steps {
-              println "Deploy Started"
-              sh 'ls -al'
-              sh 'ansible --help'
-              println "Build End"
-          }
-      }
-  }
-  post {
-    always {
-      echo 'bra bra'
+                }
+                echo myStage
+                when {
+                    expression {myStage == 'Proceed Provision'}
+                    sh "script -qc 'su cosmos /home/cosmos/git/ansible-playbooks/provision.sh' | tail -n +2"
+                }
+                println "Provision End"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                println "Deploy Started"
+                println "Deploy End"
+            }
+        }
     }
-    failure {
-      echo 'fail!'
+    post {
+        success {
+            slackSend channel: '#ops-room',
+                color: 'good',
+                message: "The pipeline ${currentBuild.fullDisplayName} completed successfully.
+        }
+        failure {
+            mail to: 'cosmos0703@gmail.com',
+                subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                body: "Something is wrong with ${env.BUILD_URL}"
+        }
     }
-  }
 }
 // node 키워드로 파이프라인을 정의하면, script {} 없이 if-else와 같은 스크립트 작성 가능
 node {
