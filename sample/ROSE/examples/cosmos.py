@@ -3,7 +3,7 @@ This driver does not do any action.
 """
 from rose.common import obstacles, actions  # NOQA
 
-driver_name = "CosmosWillBeGooDChangeRead11"
+driver_name = "CosmosWillBeGooDChangeRead112"
 
 
 def drive(world):
