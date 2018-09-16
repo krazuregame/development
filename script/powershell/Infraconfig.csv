@@ -1,4 +1,7 @@
-resourceGroup,location,AvailabilitySetName,subnetName,subnetAddress,vnetName,vnetAddress,nsgRuleName,nsgName,port,priority
-LinuxRG,Korea Central,LinuxAVS,LinuxSubnet,10.50.1.0/24,DemoVnet,10.50.0.0/16,LinuxSSH,LinuxNSG,22,1010
-WindowsRG,Korea Central,WindowsAVS,WindowsSubnet,10.50.2.0/24,DemoVnet,10.50.0.0/16,WindowsRDP,WindowsNSG,3389,1030
-MonitoringRG,Korea Central,MonAVS,MonitoringSubnet,10.60.1.0/24,MonVnet,10.60.0.0/16,WindowsRDP,MonNSG,3389,1050
+resourceGroup,location,subnetName,subnetAddress,vnetName,vnetAddress,nsgRuleName,nsgName,port,priority
+NetworkRG,Korea Central,LinuxSubnet,10.50.1.0/24,DemoVnet,10.50.0.0/16,LinuxSSH,LinuxNSG,22,1010
+NetworkRG,Korea Central,WindowsSubnet,10.50.2.0/24,DemoVnet,10.50.0.0/16,WindowsRDP,WindowsNSG,3389,1030
+TestRG,Korea Central,,,,,,,,
+NetworkRG,Korea Central,TestSubnet,10.50.3.0/24,DemoVnet,,,,,
+WindowsRG,Korea Central,,,,,,,,
+LinuxRG,Korea Central,,,,,,,,
