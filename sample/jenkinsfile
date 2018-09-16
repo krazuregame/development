@@ -10,8 +10,12 @@ pipeline {
       stage('Test') {
           steps {
               println "Build Started"
+              script {
+                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Stage1\nStage2\nStage3', description: '', name: 'Stage')]
+              }
+              echo myStage
               println "Build End"
-          }
+        }
       }
       stage('Deploy') {
           steps {
