@@ -38,7 +38,7 @@ pipeline {
         success {
             slackSend channel: '#ops-room',
                 color: 'good',
-                message: "The pipeline ${currentBuild.fullDisplayName} completed successfully.
+                message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
         failure {
             mail to: 'cosmos0703@gmail.com',
