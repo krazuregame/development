@@ -21,7 +21,7 @@ pipeline {
           steps {
               println "Build Started"
               sh 'ls -al'
-              sh 'which ansible'
+              #sh 'which ansible'
               println "Build End"
           }
       }
