@@ -31,8 +31,9 @@ pipeline {
             steps {
                 println "Deploy Started"
                 script {
-                    publicipadress = input message: 'Define the deploy host', parameters: [string(defaultValue: '', description: '', name: 'publicip')]
+                    publicipadress = input message: 'Define the host to deploy', parameters: [string(defaultValue: '', description: '', name: 'publicip')]
                     echo publicipadress
+                    sh ‘scp -o  StrictHostKeyChecking=no ./sample/jenkinsfile azureuserr@${publicipadress}:~/’
                 }
                 println "Deploy End"
             }
