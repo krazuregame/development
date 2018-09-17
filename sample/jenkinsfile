@@ -33,8 +33,8 @@ pipeline {
                 script {
                     publicipadress = input message: 'Define the host to deploy', parameters: [string(defaultValue: '', description: '', name: 'publicip')]
                     shelltest = "azureuser@$publicipadress:~/"
-                    sh ‘scp -o "StrictHostKeyChecking no" ./sample/deploy.sh $shelltest'
-                    sh ‘scp -o "StrictHostKeyChecking no" ./sample/deploy.sh "azureuser@$publicipadress":~/’
+                    sh "scp -o 'StrictHostKeyChecking no' ./sample/deploy.sh $shelltest"
+                    sh "scp -o 'StrictHostKeyChecking no' ./sample/deploy.sh 'azureuser@$publicipadress':~/"
 
                 }
                 println "Deploy End"
