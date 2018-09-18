@@ -1,4 +1,19 @@
-﻿$username = '*******'
+﻿<#   
+================================================================================ 
+ Name: Basic_Remote_Session_Scriptblock.ps1
+ Purpose: Test Basic Remote Session between hosts
+ Author: molee
+ Description:  
+ Limitations/Prerequisite:
+    * Credentials of Hosts
+    * Must Run PowerShell (or ISE)  
+    * Requires PowerShell Azure Module
+ ================================================================================ 
+#>
+
+
+
+$username = '*******'
 $userpw = '********'
 $secureuserpw = $userpw | ConvertTo-SecureString -AsPlainText -Force
 $oscred = New-Object pscredential ($username, $secureuserpw)
