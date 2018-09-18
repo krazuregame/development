@@ -6,5 +6,7 @@
 ### vmconfig.csv
 ## 2_Export_VMs_Info_CSV.ps1
 ## 3_Excute_Post_Script.ps1
+### vmconfig.csv
 ## 4_Remote_VM_Configuration.ps1
 ## 5_Basic_Remote_Session_Scriptblock.ps1	
+### vmconfig.csv or Serverlist txt file
