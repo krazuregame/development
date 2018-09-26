@@ -35,6 +35,8 @@ Foreach ($ServerName in $ServerList) {
         $StoredRawData = $true
         $EnableWebHook = $true
         $CheckInterval = 5
+        $AlertSendTime = $null
+        $IsAlertSend   = $false
         
         # Background 실행 ScriptBlock 안에 function을 선언합니다..
         function SendSlack {
@@ -56,7 +58,7 @@ Foreach ($ServerName in $ServerList) {
                 "text" = $message
                 "username" = "Performance Checker BOT"
             }
-            $webhook = "https://hooks.slack.com/services/**********************************"
+            $webhook = "https://hooks.slack.com/services/**********************************"            
             Invoke-WebRequest -Body (ConvertTo-Json -Compress -InputObject $payload) -Method Post -UseBasicParsing -Uri $webhook | Out-Null
         }      
 
@@ -77,7 +79,9 @@ Foreach ($ServerName in $ServerList) {
                 $ServerStatus = Invoke-Command -Session $Session -Credential $oscred -ScriptBlock { ## {{{
                 #$ServerStatus = Invoke-Command  -ComputerName 127.0.0.1 -ScriptBlock { ## {{{
                     # 원격 실행
-
+                    # GameServer의 Process Count를 체크합니다.
+                    $GameProcName = "win32calc"
+                    $GameProcCount = (Get-Process | ? {$_.Name -eq $GameServerName}).count
 
                     $Counters = @(
                         '\processor(_total)\% processor time',
@@ -93,6 +97,8 @@ Foreach ($ServerName in $ServerList) {
                     $status = Get-Counter -Counter $Counters
 
                     New-Object -TypeName PSCustomObject -Property @{
+                        GameProcName   =$GameServerName
+                        GameProcCount  =$GameServerCount
                         ProcessTime    =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "processor time"}).CookedValue); 
                         ProcessQueue   =[int]($status.CounterSamples.Where({$_.Path -match "Processor Queue Length"}).CookedValue);
                         PagesSec       =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Pages/sec"}).CookedValue);
@@ -115,9 +121,25 @@ Foreach ($ServerName in $ServerList) {
 
                     # ex) CPU Utilization using slack
                     if ($ServerStatus.ProcessTime -gt 1) {
-                        SendSlack "#general"  "[Performance-Alert]" $ServerName "warning" ("CPU Utili is high!! : ("+$ServerStatus.ProcessTime+"%)")
+                        SendSlack "#general"  "[Performance-Alert]" "*$ServerName*" "warning" ("CPU Utili is high!! : ("+$ServerStatus.ProcessTime+"%)")
                     }
-                    
+
+
+                    if ($ServerStatus.GameProcCount -eq 0) {
+                        # 모니터링 GameServer Process가 없을경우 2분마다 Alert을 보냅니다.
+                        if (  (($AlertSendTime -eq "$null") -or (((Get-Date)-$AlertSendTime).Second -gt 10 )) ) {
+                            if ( $IsAlertSend -eq "$false" ) {
+                                $AlertSendTime = (Get-Date)
+                                SendSlack "#general"  "[GameServer-Alert]" $ServerName "danger" ("*"+$ServerStatus.GameProcName+"* stopped on "+$ServerName+" at _$AlertSendTime`_.")
+                                $IsAlertSend = $true
+                            }
+                        } Else {
+                            $IsAlertSend = $false
+                        }
+                    } ElseIf ($isAlertSend -eq "$true") {
+                        SendSlack "#general"  "[GameServer-Alert]" $ServerName "good" ("*$ServerName* started at _$AlertSendTime`_.")
+                        $isAlertSend = $false
+                    }
                 }
 
                 # CheckInterval 간격으로 실행합니다.
