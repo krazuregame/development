@@ -1,12 +1,16 @@
-## 0_Create_SPN.ps1
-## 0_SPN_Login.ps1
-## 1_Bulk_Infrastructure_Creation_CSV.ps1
-### Infraconfig.csv
-## 1_Bulk_VirtualMachines_Creation_CSV.ps1
-### vmconfig.csv
-## 2_Export_VMs_Info_CSV.ps1
-## 3_Excute_Post_Script.ps1
-### vmconfig.csv
-## 4_Remote_VM_Configuration.ps1
-## 5_Basic_Remote_Session_Scriptblock.ps1	
-### vmconfig.csv or Serverlist txt file
+# Azure Service PowerSehll Sample Script
+
+## 목적
+Azure IaaS 서비스 사용시 VM Deploy, VM/Process Monitoring 등 주요 기능들에 대한 PowerShell Sample Script
+
+## 환경 구축
+* [개발환경구축](./docs/environment.md)
+
+## 주요 기능
+기능 | 가이드
+------|--------------------------
+SPN(Service Principal Name) Account  |[Link](./docs/spn.md)
+Infra/VM Deploy |[Link](./docs/deploy.md)
+VM Post Job |[Link](./docs/vmpostjob.md)
+Monitoring Pre Condition |[Link](./docs/monitorprecon.md)
+Monitoring VM/Process |[Link](./docs/monitor.md)
