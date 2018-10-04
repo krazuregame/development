@@ -1,22 +1,14 @@
-# Azure Monitor in Game Industry
+# Azure Deploy/Monitor Sample Code
 
 ## 1. Overview
-게임 산업은 다른 Enterprise 서비스 구축보다 Real-Time 기반으로 돌아가기 때문에(Network Latency 및 service persistence에 민감함) Azure IaaS Service Built-Up 시 모니터링 기능을 구축하는 것이 중요하다. 
+IaaS 기반의 Azure 기능들 사용시 Infra/VM 을 배포하고 배포된 VM을 모니터링하는 PowerShell Sample Code
 
-### 1.1 Constraints
-도입이 시급함 사용시 VM Deploy, VM/Process Monitoring 등 주요 기능들에 대한 PowerShell Sample Script
+### 1.1 Sample Source Main Sequence Diagram
+<img src="../images/MainSequenceDiagram.png" width="80%" height="80%">
 
-### 1.2 Requirement
-도입이 시급함 사용시 VM Deploy, VM/Process Monitoring 등 주요 기능들에 대한 PowerShell Sample Script
+## 2. PowerShell 개발 환경 구축
 
-## 2. Environment Set-Up
-### 2.1 Development Environment Set-Up
-* [개발환경구축](./docs/environment.md)
-
-### 2.2 Monitoring Environment Set-Up
-* [모니터링환경구축](./docs/environment.md)
-
-## 3. Azure Function PowerShell Guide
+## 3. PowerShell Guide
 기능 | 가이드
 ------|--------------------------
 SPN(Service Principal Name) Account |[Link](./docs/spn.md)
