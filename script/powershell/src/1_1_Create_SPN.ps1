@@ -1,4 +1,4 @@
-﻿<#   
+<#   
 ================================================================================ 
  Name: Create_SPN.ps1 
  Purpose: Service Principal Credential Creation 
@@ -13,22 +13,20 @@
 #>
 
 
-#Login Azure account using ID/PW
+# 1. Login Azure account using ID/PW
 Login-AzureRmAccount
 
-#Set a subscription info. you want to use
-$id = Get-AzureRmSubscription -SubscriptionId "*************************"
+# Select the Subscription to use
+$subscriptionid = Read-Host "Enter the Subscription Id"
+$id = Get-AzureRmSubscription -SubscriptionId $subscriptionid
 
-#Print the subscription info.
-$id.Name
-$id.SubscriptionId
-$id.TenantId
+# Print the subscription info.
+Write-Host "ID: $id.name, SubscriptionId: $id.SubscriptionId, TenantId $id.TenantId"
 
-#Set AD app credential / Info.
+# 2. Create Azure AD Application After Setting the AD app credential / Info.
 Add-Type -Assembly System.Web
 $password = [System.Web.Security.Membership]::GeneratePassword(16,3)
-
-$securepassword = $password | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File "C:\LoginCred.txt"
+$securepassword = $password | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File ".\LoginCred.txt"
 $securepassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
 $spn = "SPN_Login"
@@ -38,23 +36,20 @@ $identifierUri = $homepage
 #$azureAdApplication = New-AzureRmADApplication -DisplayName $spn -HomePage $homepage -IdentifierUris $identifierUri -Password $securepassword 
 $azureAdApplication = New-AzureRmADApplication -DisplayName $spn -IdentifierUris $identifierUri -Password $securepassword 
 
-
-#Set Ad app id just made
+# Set Ad app id just made
 $appid = $azureAdApplication.ApplicationId
 
-#Create a AD SP with the AD app
+# 3. Create a AD SP with the AD app
 $azurespn = New-AzureRmADServicePrincipal -ApplicationId $appid
 
-#Set AD SP info.
-$spnname = $azurespn.ServicePrincipalNames
+# Set AD SP info.
+#$spnname = $azurespn.ServicePrincipalNames
 $spnRole = "Contributor"
 
-#Create a SP Role
+# 4. Create a SP Role
 New-AzureRmRoleAssignment -RoleDefinitionName $spnRole -ServicePrincipalName $appId
 
 $cred = New-object System.Management.Automation.PSCredential($appId.Guid, $securepassword)
 
 #Login using SPN with (App ID / App PW)
-Add-AzureRmAccount -Credential $cred -TenantId $id.TenantId -ServicePrincipal
-
-
+#Add-AzureRmAccount -Credential $cred -TenantId $id.TenantId -ServicePrincipal
