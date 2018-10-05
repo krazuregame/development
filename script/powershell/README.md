@@ -17,14 +17,14 @@ Supported OS: Windows 10, Windows 8.1, 8.0, Windows 7 SP1, Windows Server 2008 R
 PS C:\Users\inpa> $PSVersionTable
 Name                           Value                                                                                                                                                                                                                                           
 ----                           ----- 
-PSVersion                      5.1.18237.1000                                                                                                                                                                                                                    
-PSEdition                      Desktop                                                                                                                                                                                                                                                 
-PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}                                                                                                                                                                                                                                 
-BuildVersion                   10.0.18237.1000                                                                                                                                                                                                                                         
-CLRVersion                     4.0.30319.42000                                                                                                                                                                                                                                         
-WSManStackVersion              3.0                                                                                                                                                                                                                                                     
-PSRemotingProtocolVersion      2.3                                                                                                                                                                                                                                                     
-SerializationVersion           1.1.0.1     
+PSVersion                      5.1.18237.1000
+PSEdition                      Desktop
+PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}
+BuildVersion                   10.0.18237.1000                        
+CLRVersion                     4.0.30319.42000
+WSManStackVersion              3.0
+PSRemotingProtocolVersion      2.3
+SerializationVersion           1.1.0.1
 ```
 
 ## 3. PowerShell Guide
