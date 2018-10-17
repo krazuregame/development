@@ -62,3 +62,53 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 ### 3.1 Install & Setup Guide 
 * [Grafana 환경구축](./grafana/install.md)
 * [Grafana 대쉬보드구축](../grafana/dashboard.md)
+
+## 4. All-In-One Install Guide ##
+Azure 에서 제공하는 기본 템플릿으로 해당 템플릿을 사용하면 Linux Ubuntu 14.04 LTS VM 1개에 Telegraf, InfluxDB, Grafana 가 docker container 형태로 설치됨
+* Telegraf-InfluxDB-Grafana All-In-One Template :  https://github.com/Azure/azure-quickstart-templates/tree/master/101-Telegraf-InfluxDB-Grafana
+
+### 4.1 Azure Linux VM 생성시 ssh 공개키 등록하는 방법
+인증을 위해 SSH 키를 사용하는 Linux VM 을 만들려면 접속하고자 하는 머신에서 SSH 개인키와 공개키를 만들고 Destination Linux VM 에 본인의 SSH 공개키를 등록함
+
+### ssh keypair 만들기
+#### Linux OS
+해당 명령을 사용하여 RSA 암호화 및 2048 비트 길이를 사용하여 SSH 키 쌍을 생성
+``` bash
+in@Azure:~$ ssh-keygen -t rsa -b 2048
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/in/.ssh/id_rsa):
+Created directory '/home/in/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/in/.ssh/id_rsa.
+Your public key has been saved in /home/in/.ssh/id_rsa.pub.
+The key fingerprint is:
+```
+
+아래와 같이 개인키 id_rsa 와 공개키 id_rsa.pub 키가 생성됨
+``` bash
+in@Azure:~$ ls -al ~/.ssh
+total 16
+drwx------ 2 in in 4096 Oct 17 07:18 .
+drwxr-xr-x 4 in in 4096 Oct 17 07:18 ..
+-rw------- 1 in in 1679 Oct 17 07:18 id_rsa
+-rw-r--r-- 1 in in  413 Oct 17 07:18 id_rsa.pub
+```
+
+일반적인 공개키의 형식은 ssh-rsa ********* 와 같음
+``` bash
+in@Azure:~$ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
+```
+
+#### Window OS
+
+### ssh public key 등록
+Linux VM 생성시 SSH Public Key 칸에 위에서 만든 ssh id_rsa.pub 키 내용을 복사하여 입력함
+![](../images/LinuxVMSShPubReg.png "https://db-engines.com/en/ranking/time+series+dbms")
+
+### VM에 SSH 수행
+```bash
+ssh cosmos@myvm.westus.cloudapp.azure.com
+```
+
