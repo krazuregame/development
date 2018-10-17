@@ -19,6 +19,8 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 
 ## 2. InfluxDB ##
 시계열 데이터를 저장하고 활용하는데 특화된 형태의 DB.
+아래 시계열 DB 관련 트렌드 자료를 보면 압도적으로 1위를 유지하고 있는 걸 알 수 있음.
+<img src="../images/RankOfTimeSeriesDBMS.png" width="80%" height="80%">
 서버, 네트워크, 스토리지와 같은 인프라 모니터링을 위한 각종 데이터. 서비스 반응을 확인하기 위한 각종 지표들 저장
 * SQL-like 문법 사용
 * Schemaless 구조
@@ -34,6 +36,8 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
     - tag: indexed column
     - filed: no indexed column
 * 참고: https://docs.influxdata.com/influxdb/v1.4
+
+
 
 ### 2.1 Install & Setup Guide 
 * [InfluxDB 환경구축](./influxdb/install.md)
