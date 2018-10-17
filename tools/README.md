@@ -22,8 +22,7 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 아래 시계열 DB 관련 트렌드 자료를 보면 압도적으로 1위를 유지하고 있는 걸 알 수 있음.
 ![](../images/RankOfTimeSeriesDBMS.png "https://db-engines.com/en/ranking/time+series+dbms")
 서버, 네트워크, 스토리지와 같은 인프라 모니터링을 위한 각종 데이터. 서비스 반응을 확인하기 위한 각종 지표들 저장
-
-* Go 언어로 되어 있어 때문에 의존관계가 없이 설치가 매우 간편함. (플랫폼에 종속적이 않음)
+* Go 언어로 되어 있어 때문에 의존관계가 없이 설치가 매우 간편함. (플랫폼에 종속적이지 않음)
 * 오픈소스로서 MIT 라이센스
 * SQL-like 문법 사용
 * Schemaless 구조
@@ -39,8 +38,6 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
     - tag: indexed column
     - filed: no indexed column
 * 참고: https://docs.influxdata.com/influxdb/v1.4
-
-
 
 ### 2.1 Install & Setup Guide 
 * [InfluxDB 환경구축](./influxdb/install.md)
@@ -102,6 +99,16 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 ```
 
 #### Window OS
+Windows 10의 최신 버전은 SSH 키를 만들고 관리하고 명령 프롬프트에서 SSH 연결을 만드는 OpenSSH 클라이언트 명령을 제공함. 
+해당 OS에서는 Linux OS 와 같이 ssh-keygen 을 사용하여 ssh keypair 를 생성함.
+이외 로컬로 설치할 수 있는 공용 Windows SSH 클라이언트
+* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+* Windows 용 Git
+* MobaXterm
+* Cygwin
+ 
+PuTTYgen을 사용하여 SSH 키페어 만들기 (
+https://docs.microsoft.com/ko-kr/azure/virtual-machines/linux/ssh-from-windows)
 
 ### ssh public key 등록
 Linux VM 생성시 SSH Public Key 칸에 위에서 만든 ssh id_rsa.pub 키 내용을 복사하여 입력함
