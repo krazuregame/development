@@ -4,7 +4,7 @@
 * CSV 파일 예제 : https://github.com/krazuregame/development/script/powershell/src/Infraconfig.csv
          
 ## 예제 설명
-CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
+CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다. </
 생성되는 리소스들은 다음과 같다.
 
 1. 리소스그룹(Resource Group)
