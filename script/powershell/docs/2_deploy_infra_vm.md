@@ -23,8 +23,10 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 
 1. CSV 파일 Import하기 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
 ~~~
-Import-csv 
+Import-csv "PATH"
+Import-csv "c:\InfraConfig.csv"
 ~~~
+
 
 2. Foreach를 활용한 looping 작업 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
 ~~~
@@ -36,7 +38,26 @@ Foreach($i in $d)
 {
          $i + 5
 }
-**$d에 저장된 $a, $b, $c의 값이 순차적으로 looping 되어 6, 7, 8의 값이 순차적으로 출력된다** 
+~~~
+
+
+3. Azure 리소스 그룹 생성
+~~~
+New-AzureRmResourceGroup -Name $name -Location $location
+~~~
+
+
+4. Azure 가상네트워크 생성
+~~~
+New-AzureRmVirtualNetwork -ResourceGroupName $resourcegroup -Location $location -Name $vnetName -AddressPrefix $vnetAddress
+~~~
+
+
+5. Azure 네트워크보안그룹 생성
+~~~
+New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourcegroup -Location $location 
+Add-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleName -Description "Allow Inbound" -Access Allow -Protocol Tcp -Direction Inbound -Priority $priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $port
+Set-AzureRmNetworkSecurityGroup
 ~~~
 
 
