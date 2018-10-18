@@ -14,7 +14,7 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 * plugin 을 통해서 input, output 추가 가능    
 * 시스템 모니터링 가능
     - 별도의 플러그인 없이 Telegraf 만으로 CPU나 Memory 같은 사용량을 볼 수 있음
-### 1.1 Install & Setup Guide 
+### Install & Setup Guide 
 * [Telegraf 환경구축](./telegraf/install.md)    
 
 ## 2. InfluxDB ##
@@ -39,7 +39,7 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
     - filed: no indexed column
 * 참고: https://docs.influxdata.com/influxdb/v1.4
 
-### 2.1 Install & Setup Guide 
+### Install & Setup Guide 
 * [InfluxDB 환경구축](./influxdb/install.md)
 
 ## 3. Grafana ##
@@ -56,7 +56,7 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 * Plugins
     - https://grafana.com/plugins
 
-### 3.1 Install & Setup Guide 
+### Install & Setup Guide 
 * [Grafana 환경구축](./grafana/install.md)
 * [Grafana 대쉬보드구축](../grafana/dashboard.md)
 
