@@ -6,7 +6,7 @@
 ## 예제 설명
 CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
 
-생성할 Azure의 리소스들은 다음과 같다.
+CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
 
 1. 리소스그룹(Resource Group)
 2. 가상네트워크(Virtual Network)
@@ -19,46 +19,74 @@ NetworkRG	| Korea Central	| LinuxSubnet	| 10.50.1.0/24	| DemoVnet	| 10.50.0.0/16
 NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/16	| WindowsRDP	| WindowsNSG	| 3389	| 1030
 
 
-## Powershell 
+## Powershell 코드설명
 
 1. CSV 파일 Import하기 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
 ~~~
-Import-csv "PATH"
 Import-csv "c:\InfraConfig.csv"
 ~~~
 
 
 2. Foreach를 활용한 looping 작업 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
 ~~~
-$a = 1
-$b = 2
-$c = 3
-$d = $a, $b, $c
-Foreach($i in $d)
-{
-         $i + 5
+$csvpath = Import-csv "c:\InfraConfig.csv"
+Foreach ($csv in $csvpath){
+
+         $csv.resourcegroup
+         $csv.location
+             ...
+}
+~~~
+**CSV파일의 값들을 읽어들여, 변수에 순차적으로 저장된다**
+
+3. Azure 리소스 그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+~~~
+$csvpath = Import-csv "c:\InfraConfig.csv"
+Foreach ($csv in $csvpath){
+
+         New-AzureRmResourceGroup -Name $csv.name -Location $csv.location
 }
 ~~~
 
 
-3. Azure 리소스 그룹 생성
+4. Azure 가상네트워크 생성 
 ~~~
-New-AzureRmResourceGroup -Name $name -Location $location
+$csvpath = Import-csv "c:\InfraConfig.csv"
+Foreach ($csv in $csvpath){
+
+         New-AzureRmVirtualNetwork -ResourceGroupName $csv.resourcegroup -Location $csv.location `
+         -Name $csv.vnetName -AddressPrefix $csv.vnetAddress
+}
 ~~~
 
 
-4. Azure 가상네트워크 생성
+5. Azure 서브넷 생성 
 ~~~
-New-AzureRmVirtualNetwork -ResourceGroupName $resourcegroup -Location $location -Name $vnetName -AddressPrefix $vnetAddress
+$csvpath = Import-csv "c:\InfraConfig.csv"
+Foreach ($csv in $csvpath){
+         
+         $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $csv.resourcegroup -Name $csv.vnetName 
+         Add-AzureRmVirtualNetworkSubnetConfig -Name $csv.subnetName -AddressPrefix $csv.subnetAddress -VirtualNetwork $vnet
+         $vnet | Set-AzureRmVirtualNetwork
+}
 ~~~
 
 
-5. Azure 네트워크보안그룹 생성
+6. Azure 네트워크보안그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/manage-network-security-group#work-with-network-security-groups)
 ~~~
-New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourcegroup -Location $location 
-Add-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleName -Description "Allow Inbound" -Access Allow -Protocol Tcp -Direction Inbound -Priority $priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $port
-Set-AzureRmNetworkSecurityGroup
+$csvpath = Import-csv "c:\InfraConfig.csv"
+Foreach ($csv in $csvpath){
+
+    New-AzureRmNetworkSecurityGroup -name $csv.nsgName -ResourceGroupName $csv.resourcegroup -Location $csv.location 
+    
+    $nsg = Get-AzureRmNetworkSecurityGroup -Name $csv.nsgName -ResourceGroupName $csv.resourcegroup
+        $nsgRule = $nsg | Add-AzureRmNetworkSecurityRuleConfig -Name $csv.nsgRuleName -Description "Allow Inbound" -Access Allow -Protocol Tcp -Direction Inbound -Priority $csv.priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $csv.port
+    
+    $nsgRule | Set-AzureRmNetworkSecurityGroup
+    
+}
 ~~~
+
 
 
 ## Code 설명
