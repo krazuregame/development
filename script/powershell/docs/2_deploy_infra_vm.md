@@ -24,13 +24,11 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 
 1. 실습1에서 생성한 AD Service Principal을 통하여 Azure에 로그인한다.
 ~~~
-```
 $tenantID = "*************************"
 $appid = "*************************"
 $pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
 $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
-```
 ~~~
 
 ## SPN Scenario Diagram
