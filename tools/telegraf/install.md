@@ -1,5 +1,6 @@
 ## Install
 Time-Series Data Collector Version 1.8.2
+(참고: https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)
 
 ### Ubuntu: 
 1. Add the InfluxData repository with the following commands:
