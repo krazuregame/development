@@ -5,7 +5,6 @@
          
 ## 예제 설명
 CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
-
 CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
 
 1. 리소스그룹(Resource Group)
@@ -37,7 +36,7 @@ Foreach ($csv in $csvpath){
              ...
 }
 ~~~
-**CSV파일의 값들을 읽어들여, 변수에 순차적으로 저장된다**
+
 
 3. Azure 리소스 그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 ~~~
