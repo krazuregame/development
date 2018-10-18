@@ -2,7 +2,13 @@
 
 * Code: https://github.com/krazuregame/development/script/powershell/src/2_1_Bulk_Infrastructure_Creation_CSV.ps1
 * CSV 파일 예제 : https://github.com/krazuregame/development/script/powershell/src/Infraconfig.csv
-         
+
+
+## Scenario Diagram
+<img src="../../../images/Infraconfig.png" width="60%" height="60%">
+
+
+
 ## 예제 설명
 CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
 CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
@@ -96,6 +102,3 @@ Foreach ($csv in $csvpath){
 
 
 
-
-## SPN Scenario Diagram
-<img src="../../../images/Infraconfig.png" width="60%" height="60%">
