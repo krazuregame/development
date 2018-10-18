@@ -40,7 +40,9 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-3. Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+[3-5. Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+
+3. Azure 리소스 그룹 생성
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
