@@ -78,11 +78,10 @@ $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
 
     New-AzureRmNetworkSecurityGroup -name $csv.nsgName -ResourceGroupName $csv.resourcegroup -Location $csv.location 
-    
-    $nsg = Get-AzureRmNetworkSecurityGroup -Name $csv.nsgName -ResourceGroupName $csv.resourcegroup
-        $nsgRule = $nsg | Add-AzureRmNetworkSecurityRuleConfig -Name $csv.nsgRuleName -Description "Allow Inbound" -Access Allow -Protocol Tcp -Direction Inbound -Priority $csv.priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $csv.port
-    
-    $nsgRule | Set-AzureRmNetworkSecurityGroup
+    ...
+    Add-AzureRmNetworkSecurityRuleConfig -Name $csv.nsgRuleName -Access Allow -Protocol Tcp -Direction Inbound -Priority $csv.priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $csv.port
+    ... 
+    Set-AzureRmNetworkSecurityGroup
     
 }
 ~~~
