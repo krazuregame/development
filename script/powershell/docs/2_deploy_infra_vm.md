@@ -21,12 +21,14 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 ## Powershell 코드설명
 
 1. CSV 파일 Import하기 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
+
 ~~~
 Import-csv "c:\InfraConfig.csv"
 ~~~
 
 
 2. Foreach를 활용한 looping 작업 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
+
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
@@ -39,6 +41,7 @@ Foreach ($csv in $csvpath){
 
 
 3. Azure 리소스 그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
@@ -49,6 +52,7 @@ Foreach ($csv in $csvpath){
 
 
 4. Azure 가상네트워크 생성 
+
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
@@ -60,6 +64,7 @@ Foreach ($csv in $csvpath){
 
 
 5. Azure 서브넷 생성 
+
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
@@ -71,7 +76,8 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-6. Azure 네트워크보안그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/manage-network-security-group#work-with-network-security-groups)
+6. Azure 네트워크보안그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
+
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
@@ -87,18 +93,6 @@ Foreach ($csv in $csvpath){
 
 
 
-## Code 설명
-
-1. 실습1에서 생성한 AD Service Principal을 통하여 Azure에 로그인한다.
-~~~
-$tenantID = "*************************"
-$appid = "*************************"
-$pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
-$cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
-Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
-~~~
-
-2. 
 
 ## SPN Scenario Diagram
 <img src="../../../images/SPN.png" width="60%" height="60%">
