@@ -4,11 +4,6 @@
 * CSV 파일 예제 : https://github.com/krazuregame/development/script/powershell/src/Infraconfig.csv
 
 
-## Scenario Diagram
-<img src="../../../images/Infraconfig.png" width="60%" height="60%">
-
-
-
 ## 예제 설명
 CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
 CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
@@ -22,6 +17,10 @@ ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress |
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
 NetworkRG	| Korea Central	| LinuxSubnet	| 10.50.1.0/24	| DemoVnet	| 10.50.0.0/16	| LinuxSSH	| LinuxNSG	| 22	| 1010
 NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/16	| WindowsRDP	| WindowsNSG	| 3389	| 1030
+
+
+## Scenario Diagram
+<img src="../../../images/Infraconfig.png" width="60%" height="60%">
 
 
 ## Powershell 코드설명
