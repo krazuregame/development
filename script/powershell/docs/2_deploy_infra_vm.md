@@ -20,7 +20,7 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 
 ## Powershell 코드설명
 
-1. CSV 파일 Import하기 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
+1. CSV 파일 Import하기 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
 
 ~~~
 Import-csv "c:\InfraConfig.csv"
@@ -40,9 +40,9 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-[3-5. Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
-3. Azure 리소스 그룹 생성
+3. Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -53,7 +53,8 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-4. Azure 가상네트워크 생성 
+4. Azure 가상네트워크 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -65,7 +66,7 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-5. Azure 서브넷 생성 
+5. Azure 서브넷 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -97,4 +98,4 @@ Foreach ($csv in $csvpath){
 
 
 ## SPN Scenario Diagram
-<img src="../../../images/SPN.png" width="60%" height="60%">
+<img src="../../../images/Infraconfig.png" width="60%" height="60%">
