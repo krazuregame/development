@@ -27,7 +27,7 @@ Import-csv "c:\InfraConfig.csv"
 ~~~
 
 
-2. Foreach를 활용한 looping 작업 [문서링크](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
+2. Foreach를 활용한 looping 작업 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -40,7 +40,7 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-3. Azure 리소스 그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+3. Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -76,7 +76,7 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-6. Azure 네트워크보안그룹 생성 [문서링크](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
+6. Azure 네트워크보안그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
