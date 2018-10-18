@@ -19,8 +19,14 @@ NetworkRG	| Korea Central	| LinuxSubnet	| 10.50.1.0/24	| DemoVnet	| 10.50.0.0/16
 NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/16	| WindowsRDP	| WindowsNSG	| 3389	| 1030
 
 
-## Powershell 코드
+## Powershell 
 
+1. CSV 파일 Import하기 [Docs](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
+~~~
+Import-csv 
+~~~
+
+2. 
 
 1. 실습1에서 생성한 AD Service Principal을 통하여 Azure에 로그인한다.
 ~~~
@@ -30,6 +36,8 @@ $pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
 $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 ~~~
+
+2. 
 
 ## SPN Scenario Diagram
 <img src="../../../images/SPN.png" width="60%" height="60%">
