@@ -26,7 +26,7 @@ Windows-02 | WindowsRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet 
 
 
 ## Scenario Diagram
-<img src="../../../images/Infraconfig.png" width="60%" height="60%">
+<img src="../../../images/vmconfig.png" width="60%" height="60%">
 
 
 ## Powershell 코드설명
