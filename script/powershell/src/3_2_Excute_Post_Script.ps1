@@ -8,8 +8,6 @@
     * Need "VMconfig.csv" file for servernames
     * Must Run PowerShell (or ISE)  
     * Requires PowerShell Azure Module
-    * Need Slack Application URI (if you don't want to be alerted, just remove slack part from this script)
-    * 참고: https://api.slack.com/incoming-webhooks
  ================================================================================ 
 #>
 
