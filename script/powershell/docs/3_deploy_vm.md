@@ -28,81 +28,31 @@ Windows-02 | WindowsRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet 
 <img src="../../../images/vmconfig.png" width="80%" height="80%"> 
 
 
-## Powershell 코드설명
+## Powershell 문법
 
-1. CSV 파일 Import하기 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
-
-~~~
-Import-csv "c:\InfraConfig.csv"
-~~~
-
-
-2. Foreach를 활용한 looping 작업 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
+* Start-Job을 통한 Background Job 실행 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/start-job?view=powershell-6)
 
 ~~~
-$csvpath = Import-csv "c:\InfraConfig.csv"
-Foreach ($csv in $csvpath){
+Start-Job -ScriptBlock {Get-Process}
+Id    Name  State    HasMoreData  Location   Command
+---   ----  -----    -----------  --------   -------
+1     Job1  Running  True         localhost  get-process
+~~~
 
-         $csv.resourcegroup
-         $csv.location
-             ...
+* Receive-Job을 통한 Background Job 결과 출력 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/receive-job?view=powershell-6)
+~~~
+$job = Start-Job -ScriptBlock {Get-Process}
+$job | Receive-Job
+~~~
+
+* Foreach / Start-Job을 통한 병렬 Background 병렬 Job 실행 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays?view=powershell-6#iterations-over-array-elements)
+~~~
+$server = 'Windows-01', 'Windows-02', 'Windows-03', ...
+Foreach ($server in $servers){ 
+         Start-Job -Name $server -ScriptBlock {Get-Process}
 }
 ~~~
 
-
-
-3. Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
-
-
-~~~
-$csvpath = Import-csv "c:\InfraConfig.csv"
-Foreach ($csv in $csvpath){
-
-         New-AzureRmResourceGroup -Name $csv.name -Location $csv.location
-}
-~~~
-
-
-4. Azure 가상네트워크 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
-
-
-~~~
-$csvpath = Import-csv "c:\InfraConfig.csv"
-Foreach ($csv in $csvpath){
-
-         New-AzureRmVirtualNetwork -ResourceGroupName $csv.resourcegroup -Location $csv.location `
-         -Name $csv.vnetName -AddressPrefix $csv.vnetAddress
-}
-~~~
-
-
-5. Azure 서브넷 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
-
-~~~
-$csvpath = Import-csv "c:\InfraConfig.csv"
-Foreach ($csv in $csvpath){
-         
-         $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $csv.resourcegroup -Name $csv.vnetName 
-         Add-AzureRmVirtualNetworkSubnetConfig -Name $csv.subnetName -AddressPrefix $csv.subnetAddress -VirtualNetwork $vnet
-         $vnet | Set-AzureRmVirtualNetwork
-}
-~~~
-
-
-6. Azure 네트워크보안그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
-
-~~~
-$csvpath = Import-csv "c:\InfraConfig.csv"
-Foreach ($csv in $csvpath){
-
-    New-AzureRmNetworkSecurityGroup -name $csv.nsgName -ResourceGroupName $csv.resourcegroup -Location $csv.location 
-    ...
-    Add-AzureRmNetworkSecurityRuleConfig -Name $csv.nsgRuleName -Access Allow -Protocol Tcp -Direction Inbound -Priority $csv.priority -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange $csv.port
-    ... 
-    Set-AzureRmNetworkSecurityGroup
-    
-}
-~~~
-
+## Powershell 코드 
 
 
