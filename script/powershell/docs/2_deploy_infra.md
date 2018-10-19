@@ -24,16 +24,16 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 <img src="../../../images/Infraconfig.png" width="60%" height="60%">
 
 
-## Powershell 코드설명
+## Powershell 코드
 
-1. CSV 파일 Import하기 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
+* CSV 파일 Import하기 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
 
 ~~~
 Import-csv "c:\InfraConfig.csv"
 ~~~
 
 
-2. Foreach를 활용한 looping 작업 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
+* Foreach를 활용한 looping 작업 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -47,7 +47,7 @@ Foreach ($csv in $csvpath){
 
 
 
-3. Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+* Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 
 ~~~
@@ -59,7 +59,7 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-4. Azure 가상네트워크 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+* Azure 가상네트워크 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 
 ~~~
@@ -72,7 +72,7 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-5. Azure 서브넷 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+* Azure 서브넷 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
@@ -85,7 +85,7 @@ Foreach ($csv in $csvpath){
 ~~~
 
 
-6. Azure 네트워크보안그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
+* Azure 네트워크보안그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
 
 ~~~
 $csvpath = Import-csv "c:\InfraConfig.csv"
