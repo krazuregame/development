@@ -13,8 +13,17 @@ CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 �
 2. 가상네트워크(Virtual Network)
 3. 서브넷(Subnet)
 4. 네트워크 보안 그룹(Network Security Group)
+
+
+> 리소스 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/azure-resource-manager/powershell-azure-resource-manager#understand-scope)
+
+
 > 가상 네트워크 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+
+
 > 네트워크 보안 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell#create-a-network-security-group)
+
+
 
 ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress | nsgname | nsgrulename | port | priority
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
