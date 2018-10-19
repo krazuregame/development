@@ -23,10 +23,13 @@ Linux-02 | LinuxRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet | Li
 Windows-01 | WindowsRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet | WindowsSubnet | Windows-01-pip | Windows-01-nic | WindowsNSG | Windows-01-disk | 127 | windows | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | WindowsAVS
 Windows-02 | WindowsRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet | WindowsSubnet | Windows-02-pip | Windows-02-nic | WindowsNSG | Windows-02-disk | 127 | windows | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | WindowsAVS
 
-
+.center {
+  display: block;
+  margin: auto;
+}
 
 ## Scenario Diagram
-<img src="../../../images/vmconfig.png" width="80%" height="80%"> {:.aligncenter}
+<img src="../../../images/vmconfig.png" width="80%" height="80%"> { .center}
 
 
 ## Powershell 코드설명
