@@ -13,6 +13,9 @@ publisher | Microsoft.Compute | Microsoft.Compute.Extensions
 형식 | CustomScriptExtension | CustomScript
 typeHandlerVersion | 1.9 | 2.0
 
+* Azure SAS(Shared Access Signature) 참고 문서[Docs Link](https://docs.microsoft.com/ko-kr/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+
+
 ## 예제 설명
 Windows와 Linux에 실행될 스크립트를 작성한 뒤, Azure Blob Storage에 업로드하여 각 가상머신에 운영체제에 맞게 스크립트를 실행한다.
 
