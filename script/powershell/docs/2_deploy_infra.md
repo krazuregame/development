@@ -25,13 +25,14 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 
 ## Powershell 문법
 * Foreach를 통한 Array 반복 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays?view=powershell-6#iterations-over-array-elements)
-~~~
+```powershell
 $a = 0..9
 foreach ($element in $a) {
   $element
 }
-~~~
-~~~
+```
+```powershell
+<Output>
 0
 1
 2
@@ -42,20 +43,20 @@ foreach ($element in $a) {
 7
 8
 9
-~~~
+```
 
 ## Powershell 코드
 
 * CSV 파일 Import하기 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Utility/Import-Csv?view=powershell-6)
 
-~~~
+```powershell
 Import-csv "c:\InfraConfig.csv"
-~~~
+```
 
 
 * Foreach를 활용한 looping 작업 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/Microsoft.PowerShell.Core/ForEach-Object?view=powershell-6)
 
-~~~
+```powershell
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
 
@@ -63,38 +64,38 @@ Foreach ($csv in $csvpath){
          $csv.location
              ...
 }
-~~~
+```
 
 
 
 * Azure 리소스 그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 
-~~~
+```powershell
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
 
          New-AzureRmResourceGroup -Name $csv.name -Location $csv.location
 }
-~~~
+```
 
 
 * Azure 가상네트워크 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 
-~~~
+```powershell
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
 
          New-AzureRmVirtualNetwork -ResourceGroupName $csv.resourcegroup -Location $csv.location `
          -Name $csv.vnetName -AddressPrefix $csv.vnetAddress
 }
-~~~
+```
 
 
 * Azure 서브넷 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
-~~~
+```powershell
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
          
@@ -102,12 +103,12 @@ Foreach ($csv in $csvpath){
          Add-AzureRmVirtualNetworkSubnetConfig -Name $csv.subnetName -AddressPrefix $csv.subnetAddress -VirtualNetwork $vnet
          $vnet | Set-AzureRmVirtualNetwork
 }
-~~~
+```
 
 
 * Azure 네트워크보안그룹 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell)
 
-~~~
+```powershell
 $csvpath = Import-csv "c:\InfraConfig.csv"
 Foreach ($csv in $csvpath){
 
@@ -118,7 +119,7 @@ Foreach ($csv in $csvpath){
     Set-AzureRmNetworkSecurityGroup
     
 }
-~~~
+```
 
 
 
