@@ -53,6 +53,10 @@ Foreach ($server in $servers){
 }
 ~~~
 
-## Powershell 코드 
-
+## Azure Powershell 코드 
+* 가용성 집합(Availability Set) 생성 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/azurerm.compute/new-azurermavailabilityset?view=azurermps-6.10.0)
+~~~
+New-AzureRmAvailabilitySet -Location $location -Name $AvailabilitySetName -ResourceGroupName $resourceGroup `
+-Sku aligned -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5
+~~~
 
