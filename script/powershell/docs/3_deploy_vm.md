@@ -6,7 +6,7 @@
 ## Microsoft 참고 문서
 
 
-* 가상머신 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json#sample-script)
+* Powershell을 통한 가상머신 생성 :  [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json#sample-script)
 
 
 ## 예제 설명
