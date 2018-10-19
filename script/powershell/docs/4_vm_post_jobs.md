@@ -59,11 +59,30 @@ Custom Script Extension은 가상머신에서 스크립트를 다운로드하고
 
 ## Powershell 코드
 
-* Start-Job을 통한 Background Job 실행 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/start-job?view=powershell-6)
+* 공통 정보 작성 (저장소 계정 / SAS 키)
 
 ```powershell
-Start-Job -ScriptBlock {Get-Process}
-Id    Name  State    HasMoreData  Location   Command
----   ----  -----    -----------  --------   -------
-1     Job1  Running  True         localhost  get-process
+$storageAccountName = "moonsunscripts"
+$storageAccountKey = "**********************************"
+$ProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
+```
+
+* Linux Custom Extension
+
+```powershell
+$linuxuri = "https://**********.blob.core.windows.net/scripts/InitialScriptLinux.sh"
+$linuxSettings = @{"fileUris" = @($linuxuri); "commandToExecute" = "./InitialScriptLinux.sh"}
+        
+Set-AzureRmVMExtension -ResourceGroupName $resourceGroup -Location $location -VMName $vmName -Name $Post-Script-Linux `
+-Publisher "Microsoft.Azure.Extensions" -Type "customScript" -TypeHandlerVersion 2.0 -Settings $linuxSettings -ProtectedSettings $ProtectedSettings
+```
+
+* Windows Custom Extension
+
+```powershell
+$winuri = "https://**********.blob.core.windows.net/scripts/InitialScriptWindows.ps1"
+$winSettings = @{"fileUris" = @($winuri); "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File InitialScriptWindows.ps1"}
+        
+Set-AzureRmVMExtension -ResourceGroupName $resourceGroup -Location $location -VMName $vmName -Name Post-Script-Windows `
+-Publisher "Microsoft.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion 1.9 -Settings $winSettings -ProtectedSettings $ProtectedSettings
 ```
