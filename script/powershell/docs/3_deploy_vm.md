@@ -32,26 +32,26 @@ Windows-02 | WindowsRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet 
 
 * Start-Job을 통한 Background Job 실행 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/start-job?view=powershell-6)
 
-~~~
+```powershell
 Start-Job -ScriptBlock {Get-Process}
 Id    Name  State    HasMoreData  Location   Command
 ---   ----  -----    -----------  --------   -------
 1     Job1  Running  True         localhost  get-process
-~~~
+```
 
 * Receive-Job을 통한 Background Job 결과 출력 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/receive-job?view=powershell-6)
-~~~
+```powershell
 $job = Start-Job -ScriptBlock {Get-Process}
 $job | Receive-Job
-~~~
+```
 
 * Foreach / Start-Job을 통한 병렬 Background 병렬 Job 실행 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays?view=powershell-6#iterations-over-array-elements)
-~~~
+```powershell
 $server = 'Windows-01', 'Windows-02', 'Windows-03', ...
 Foreach ($server in $servers){ 
          Start-Job -Name $server -ScriptBlock {Get-Process}
 }
-~~~
+```
 
 ## Azure Powershell 코드 
 * 가용성 집합(Availability Set) 생성 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/azurerm.compute/new-azurermavailabilityset?view=azurermps-6.10.0)
