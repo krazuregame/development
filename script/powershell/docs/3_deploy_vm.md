@@ -1,7 +1,7 @@
 # Deploy Azure VMs using CSV - PowerShell Example
 
-* Code: https://github.com/krazuregame/development/blob/master/script/powershell/src/2_2_Bulk_VirtualMachines_Creation_CSV.ps1
-* CSV 파일 예제 : https://github.com/krazuregame/development/blob/master/script/powershell/src/vmconfig.csv
+* Code: [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/2_2_Bulk_VirtualMachines_Creation_CSV.ps1)
+* CSV 파일 예제 : [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/vmconfig.csv)
 
 
 ## 예제 설명
