@@ -48,8 +48,8 @@ Custom Script Extension은 가상머신에서 스크립트를 다운로드하고
 
 <img src="../../../images/SASkey.png" width="80%" height="80%"> 
 
-> "저장소 계정" / "엑세스 키" / "스크립트 파일 URL" 를 기록하여 둔다. 이 후, Powershell 스크립트에 적용
-> $storageAccountName / $storageAccountKey / $scripturi 변수에 각 적용
+> "저장소 계정" / "엑세스 키" / "스크립트 파일 URL" 를 기록하여 둔다. 이 후, Powershell 스크립트에 적용한다.
+>> "$storageAccountName / $storageAccountKey / $scripturi" 변수에 각각 적용
 
 
 
