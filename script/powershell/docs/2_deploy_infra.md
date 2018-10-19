@@ -1,7 +1,9 @@
-# Azure Deploy Infrastructure with CSV - PowerShell Example
+# Deploy Azure Infrastructure using CSV - PowerShell Example
 
 * Code: https://github.com/krazuregame/development/script/powershell/src/2_1_Bulk_Infrastructure_Creation_CSV.ps1
+      
 * CSV 파일 예제 : https://github.com/krazuregame/development/script/powershell/src/Infraconfig.csv
+      
 
 
 ## 예제 설명
