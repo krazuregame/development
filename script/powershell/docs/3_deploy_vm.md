@@ -67,6 +67,7 @@ New-AzureRmAvailabilitySet -Location $location -Name $AvailabilitySetName -Resou
 > 가용성 집합 참고 문서 [Docs Link](https://blogs.technet.microsoft.com/koalra/2014/08/06/microsoft-azure-vm-availability-set-load-bala/)
 
 
+
 * 네트워크 구성 [Docs Link](https://docs.microsoft.com/ko-kr/powershell/module/azurerm.network/new-azurermnetworkinterface?view=azurermps-6.10.0#create)
 ```powershell
 # 가상머신에 할당할 공용 IP를 생성후, $pip 변수에 공용 IP 정보 저장
@@ -83,11 +84,18 @@ $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGr
 
 * 가상머신 생성
 ```powershell
-# 가상머신 구성정보 등록
+# 가상머신 구성 정보등록
+# 가용성 집합 정보등록
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+
+# 가상머신 운영체제 이미지 정보등록
 $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
 $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $vmName -Credential $oscred -ProvisionVMAgent
+
+# 가상머신 OS 디스크 정보등록
 $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
+
+# 가상머신 네트워크 정보등록
 $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
 # 가상머신 생성
