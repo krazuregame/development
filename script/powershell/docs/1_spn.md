@@ -1,7 +1,7 @@
 # Azure AD SPN Account - PowerShell Example
 
-* Code: https://github.com/krazuregame/development/blob/master/script/powershell/src/1_1_Create_SPN.ps1
-* Code: https://github.com/krazuregame/development/blob/master/script/powershell/src/1_2_SPN_Login.ps1
+* 생성 Code: [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/1_1_Create_SPN.ps1)
+* 로그인 Code: [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/1_2_SPN_Login.ps1)
 
 ## 예제 설명
 다음을 순차적으로 실행한다.
