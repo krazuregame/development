@@ -3,6 +3,11 @@
 * Code: [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/2_2_Bulk_VirtualMachines_Creation_CSV.ps1)
 * CSV 파일 예제 : [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/vmconfig.csv)
 
+## Microsoft 참고 문서
+
+
+* 가상머신 생성 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json#sample-script)
+
 
 ## 예제 설명
 CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 생성한 Infrastructure 위에 가상머신을 생성한다.
