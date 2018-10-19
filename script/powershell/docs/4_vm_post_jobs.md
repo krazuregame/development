@@ -38,8 +38,15 @@ Custom Script Extension은 가상머신에서 스크립트를 다운로드하고
 
 
 ## Azure Blob Storage에 스크립트 파일 업로드 / SAS 키 생성
-1. Azure 포탈에서 Blob Storage로 이동하여, "저장소계정 - Blob 저장소 - 컨테이너"에 스크립트 파일을 업로드 한다. 
+1. Azure 포탈에서 저장소 계정으로 이동하여, "저장소계정 - Blob 저장소 - 컨테이너"에 스크립트 파일을 업로드 한다. (없으면 생성) 
 <img src="../../../images/BlobUpload.png" width="80%" height="80%"> 
+
+
+2. 저장소 계정에서 "엑세스 키" 메뉴를 선택하여, SAS Key를 생성하고 복사한다.
+<img src="../../../images/SASkey.png" width="80%" height="80%"> 
+
+
+> "저장소 계정" / "엑세스 키" / "스크립트 파일 URI" 를 복사하여 둔다.
 
 
 
