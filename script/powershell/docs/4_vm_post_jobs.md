@@ -4,10 +4,14 @@
 * Post Script 예제 : [Linux용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptLinux.sh), [Windows용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptWindows.ps1)
 
 ## Microsoft 참고 문서
+* Azure Extension :  [Linux Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-linux), [Windows Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-windows)
 
 
-* Powershell을 통한 가상머신 생성 :  [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json#sample-script)
-
+Type | Windows | Linux
+------------ | ------------- | -------------
+publisher | Microsoft.Compute | Microsoft.Compute.Extensions
+형식 | CustomScriptExtension | CustomScript
+typeHandlerVersion | 1.9 | 2.0
 
 ## 예제 설명
 CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 생성한 Infrastructure 위에 가상머신을 생성한다.
