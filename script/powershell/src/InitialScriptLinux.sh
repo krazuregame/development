@@ -35,3 +35,6 @@ sudo yum -y install omi-psrp-server
 sudo sed -i "s/httpport=0/httpport=0,5985/g" /etc/opt/omi/conf/omiserver.conf
 sudo /opt/omi/bin/service_control restart
 
+
+exit 0
+
