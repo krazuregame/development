@@ -4,7 +4,7 @@
 * Post Script 예제 : [Linux용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptLinux.sh), [Windows용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptWindows.ps1)
 
 ## Microsoft 참고 문서
-* Azure Extension :  [Linux Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-linux), [Windows Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-windows)
+* Azure Extension 참고 문서:  [Linux Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-linux), [Windows Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-windows)
 
 
 Type | Windows | Linux
@@ -14,15 +14,18 @@ publisher | Microsoft.Compute | Microsoft.Compute.Extensions
 typeHandlerVersion | 1.9 | 2.0
 
 ## 예제 설명
-CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 생성한 Infrastructure 위에 가상머신을 생성한다.
-CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
+Windows와 Linux에 실행될 스크립트를 작성한 뒤, Azure Blob Storage에 업로드하여 각 가상머신에 운영체제에 맞게 스크립트를 실행한다.
 
-1. 리소스그룹(Resource Group)
-2. 공용 IP(Public IP)
-3. 네트워크인터페이스카드(NIC)
-4. 디스크(OS Disk)
-5. 가용성집합(Availability Set)
-6. 가상머신(Virtual Machine)
+
+Custom Script Extension은 가상머신에서 스크립트를 다운로드하고 실행한다. 
+이 Extension은 가상머신 배포 후 구성, 소프트웨어 설치 또는 기타 구성/관리 작업에 유용하며, 스크립트를 Azure Storage 또는 기타 액세스가 가능한 인터넷 위치에서 다운로드하여 실행할 수 있다.
+
+
+1. 운영체제 / 버전에 따라 적용할 스크립트 작성
+2. Azure Blob에 스크립트 파일 업로드
+3. SAS(Storage Access Signature)키 생성
+4. SAS키를 통한 Blob 스크립트 파일 접근
+5. Azure Custom Script Extension을 통해 각 가상머신에 스크립트 적용
 
 
 vmname | resourcegroup | location | vmsize | nwresourceGroup | vnetName | subnetName | pipName | nicname | nsgname | osdiskname | disksize | os | publisher | offer | sku | AvailabilitySetName
