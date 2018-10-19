@@ -25,6 +25,17 @@ $pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
 $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
+#Check if Resource Group Exists
+if($resourceGroup -ne "$null")
+{
+    $createRG = Get-AzureRmResourceGroup -Name $csv.resourceGroup -ErrorVariable notPresent -ErrorAction SilentlyContinue
+    if($notPresent)
+    {
+          # Create a resource group
+          $createRG = New-AzureRmResourceGroup -Name $csv.resourceGroup -Location $csv.location
+    }
+
+}
 
 #Get vNET info.
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $nwresourceGroup -Name $vnetName
