@@ -1,4 +1,4 @@
-# Excute Post(Initial Setting) Script to Azure VMs
+# Excute Post Script to Azure VMs
 
 * Powershell Code: [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/3_2_Excute_Post_Script.ps1)
 * Post Script 예제 : [Linux용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptLinux.sh), [Windows용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptWindows.ps1)
@@ -18,7 +18,7 @@ Windows와 Linux에 실행될 스크립트를 작성한 뒤, Azure Blob Storage�
 
 
 Custom Script Extension은 가상머신에서 스크립트를 다운로드하고 실행한다. 
-이 Extension은 가상머신 배포 후 구성, 소프트웨어 설치 또는 기타 구성/관리 작업에 유용하며, 스크립트를 Azure Storage 또는 기타 액세스가 가능한 인터넷 위치에서 다운로드하여 실행할 수 있다.
+이 Extension은 가상머신 배포 후, 소프트웨어 설치 또는 기타 구성/관리 작업에 유용하며, 스크립트를 Azure Storage 또는 기타 액세스가 가능한 인터넷 위치에서 다운로드하여 실행할 수 있다.
 
 
 1. 운영체제 / 버전에 따라 적용할 스크립트 작성
