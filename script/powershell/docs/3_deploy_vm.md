@@ -60,3 +60,5 @@ New-AzureRmAvailabilitySet -Location $location -Name $AvailabilitySetName -Resou
 -Sku aligned -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5
 ```
 > 가용성 집합 참고 문서 [Docs Link](https://blogs.technet.microsoft.com/koalra/2014/08/06/microsoft-azure-vm-availability-set-load-bala/)
+
+
