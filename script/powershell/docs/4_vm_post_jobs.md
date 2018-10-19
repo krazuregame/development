@@ -23,7 +23,7 @@ Custom Script Extension은 가상머신에서 스크립트를 다운로드하고
 
 1. 운영체제 / 버전에 따라 적용할 스크립트 작성
 2. Azure Blob에 스크립트 파일 업로드
-3. SAS(Storage Access Signature)키 생성
+3. SAS(Shared Access Signature)키 생성
 4. SAS키를 통한 Blob 스크립트 파일 접근
 5. Azure Custom Script Extension을 통해 각 가상머신에 스크립트 적용
 
