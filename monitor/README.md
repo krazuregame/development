@@ -22,9 +22,10 @@ Real-Time 기반의 게임 산업에서는 초단위 시스템 모니터링이 �
 기능 | 가이드
 ------|--------------------------
 SPN(Service Principal Name) Account |[Link](../script/powershell/docs/1_spn.md)
-Deploy Infra/VM |[Link](../script/powershell/docs/2_deploy_infra_vm.md)
-VM Post-Job |[Link](../script/powershell/docs/3_vm_post_jobs.md)
-Monitoring Pre-Condition |[Link](../script/powershell/docs/4_set_monitoring_server.md)
+Deploy Infra |[Link](../script/powershell/docs/2_deploy_infra.md)
+Deploy VM |[Link](../script/powershell/docs/3_deploy_vm.md)
+VM Post-Job |[Link](../script/powershell/docs/4_vm_post_jobs.md)
+Monitoring Pre-Condition |[Link](../script/powershell/docs/99_set_monitoring_server.md)
 Monitor VM/Process |[Link](../script/powershell/docs/5_monitor_vm_process.md)
 ### 3.2 Main Sequence Diagram
 <img src="../images/MainSequenceDiagram.png" width="80%" height="80%">
