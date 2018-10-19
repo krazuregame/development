@@ -9,13 +9,6 @@ Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU -Nam
 #방화벽 끄기
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 
-#애저파워쉘 모듈 설치
-#Install-Module -Name AzureRM -Force -Confirm:$False
-
-#IIS 설치
-#Install-WindowsFeature -name Web-Server -IncludeManagementTools
-#Import-Module AzureRM
-
 #Ping허용
 New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 
@@ -26,8 +19,6 @@ New-Partition -AssignDriveLetter -UseMaximumSize | `
 Format-Volume -FileSystem NTFS -NewFileSystemLabel "Data_Disk1" -Confirm:$false
 #>
 
-#VM 생성시 타임존 안바꿨으면 그것도 KST로 변경
+#VM 타임존 KST로 변경
 Set-TimeZone -Name "korea Standard Time"
 
-#Get-TimeZone -ListAvailable
-#Get-TimeZone -name "korea Standard Time"
