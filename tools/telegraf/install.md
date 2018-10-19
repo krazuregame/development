@@ -1,3 +1,7 @@
+## Telegraf to InfluxDB
+### Architecture
+<img src="../../images/TelegrafInfluxArchitecture.png" width="70%" height="70%">
+
 ## Install
 Time-Series Data Collector Version 1.8.2
 
