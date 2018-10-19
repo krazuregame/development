@@ -106,42 +106,6 @@ if($os -eq "linux")
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 }
 
-# Get VM status for Slack alert
-$vmstatus = Get-AzureRmVM -ResourceGroupName "$resourceGroup" -Name "$vmName" -Status
-$displaystatus = $vmstatus.Statuses[1].DisplayStatus
-$getdate = Get-Date
-
-# Notification to slack
-if($vmstatus.Statuses[0].Code -eq "ProvisioningState/succeeded")
-    {
-        Write-Host "'$vmName' Creation is Succeeded. Just notificated to Slack channel!"
-        
-        $payload = 
-        @{
-            "text" = "'$vmName' is successfully created :) `n Status: $displaystatus `n Time: $getdate"
-        }
- 
-       $webhook = Invoke-WebRequest -UseBasicParsing `
-        -Body (ConvertTo-Json -Compress -InputObject $payload) `
-        -Method Post `
-        -Uri "https://hooks.slack.com/services/*************************"
-    }
-else
-    {
-         Write-Host "'$vmName' Creation is failed. Just notificated to Slack channel!"
-        
-        $payload = 
-        @{
-            "text" = "'$vmName' creation is failed :( `n Status: $displaystatus `n Time: $getdate"
-        }
- 
-       $webhook = Invoke-WebRequest -UseBasicParsing `
-        -Body (ConvertTo-Json -Compress -InputObject $payload) `
-        -Method Post `
-        -Uri "https://hooks.slack.com/services/*************************"
-
-
-    }
 
 
 } -ArgumentList $csv.vmName, $csv.resourceGroup, $csv.nwresourceGroup, $csv.location, $csv.vmSize, $csv.vnetName, $csv.pipname, $csv.nicname, $csv.nsgName, $csv.osdiskname, $csv.AvailabilitySetName, $csv.disksize, $csv.publisher, $csv.offer, $csv.sku, $csv.os, $csv.subnetname
