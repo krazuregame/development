@@ -13,8 +13,8 @@
 
 
 #Storage Account has script for post-script
-#Powershell(Windows) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScript.ps1
-#Bash Script(Linux) URL: https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptLinux.sh
+#Powershell(Windows) URL: https://**********.blob.core.windows.net/scripts/InitialScriptWindows.ps1
+#Bash Script(Linux) URL: https://**********.blob.core.windows.net/scripts/InitialScriptLinux.sh
           
 #Linux Extension - https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-linux
 #Set-AzureRmVMExtension -ResourceGroupName $resourceGroup -Location $location -VMName $vmName -Name $linuxscriptName -Publisher "Microsoft.Azure.Extensions" -Type "customScript" `
@@ -35,18 +35,18 @@ foreach ($csv in $csvpath){
         $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
         Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
-        $storageAccountName = "moonsunscripts"
+        $storageAccountName = "**********"
         $storageAccountKey = "**********************************"
 
         #Shell
-        $linuxuri = "https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptLinux.sh"
+        $linuxuri = "https://**********.blob.core.windows.net/scripts/InitialScriptLinux.sh"
         $linuxSettings = @{"fileUris" = @($linuxuri); "commandToExecute" = "./InitialScriptLinux.sh"}
         $linuxProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
         $linuxscriptName = "Post-Script-Linux"
 
         #PS1
-        $winuri = "https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptWindows.ps1"
-        $winSettings = @{"fileUris" = @($winuri); "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File InitialScript.ps1"}
+        $winuri = "https://**********.blob.core.windows.net/scripts/InitialScriptWindows.ps1"
+        $winSettings = @{"fileUris" = @($winuri); "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File InitialScriptWindows.ps1"}
         $winProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
         $winscriptName = "Post-Script-Windows"
                  
