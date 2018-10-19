@@ -1,17 +1,18 @@
 # Deploy Azure VMs using CSV - PowerShell Example
 
-* Code: https://github.com/krazuregame/development/script/powershell/src/2_1_Bulk_Infrastructure_Creation_CSV.ps1
-* CSV 파일 예제 : https://github.com/krazuregame/development/script/powershell/src/Infraconfig.csv
+* Code: https://github.com/krazuregame/development/blob/master/script/powershell/src/2_2_Bulk_VirtualMachines_Creation_CSV.ps1
+* CSV 파일 예제 : https://github.com/krazuregame/development/blob/master/script/powershell/src/vmconfig.csv
 
 
 ## 예제 설명
-CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
+CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 생성한 Infrastructure 위에 가상머신을 생성한다.
 CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
 
 1. 리소스그룹(Resource Group)
-2. 가상네트워크(Virtual Network)
-3. 서브넷(Subnet)
-4. 네트워크 보안 그룹(Network Security Group)
+2. 공용 IP(Public IP)
+3. 네트워크인터페이스카드(NIC)
+4. 디스크(OS Disk)
+5. 가상머신(Virtual Machine)
 
 ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress | nsgname | nsgrulename | port | priority
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
