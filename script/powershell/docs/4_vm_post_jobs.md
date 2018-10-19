@@ -34,10 +34,15 @@ Custom Script Extension은 가상머신에서 스크립트를 다운로드하고
 
 
 ## Scenario Diagram
-<img src="../../../images/vmconfig.png" width="80%" height="80%"> 
+<img src="../../../images/postscript.png" width="80%" height="80%"> 
 
 
-## Powershell 문법
+## Azure Blob Storage에 스크립트 파일 업로드
+
+
+
+
+
 
 * Start-Job을 통한 Background Job 실행 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/start-job?view=powershell-6)
 
