@@ -42,7 +42,8 @@ SerializationVersion           1.1.0.1
 기능 | 가이드
 ------|--------------------------
 SPN(Service Principal Name) Account |[Link](./docs/1_spn.md)
-Deploy Infra/VM |[Link](./docs/2_deploy_infra_vm.md)
-VM Post-Job |[Link](./docs/3_vm_post_jobs.md)
-Monitoring Pre-Condition |[Link](./docs/4_set_monitoring_server.md)
+Deploy Infra |[Link](../script/powershell/docs/2_deploy_infra.md)
+Deploy VM |[Link](../script/powershell/docs/3_deploy_vm.md)
+VM Post-Job |[Link](../script/powershell/docs/4_vm_post_jobs.md)
+Monitoring Pre-Condition |[Link](./docs/99_set_monitoring_server.md)
 Monitor VM/Process |[Link](./docs/5_monitor_vm_process.md)
