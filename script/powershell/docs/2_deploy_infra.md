@@ -4,15 +4,7 @@
       
 * CSV 파일 예제 : [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/Infraconfig.csv)
 
-
-## 예제 설명
-CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
-CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
-
-1. 리소스그룹(Resource Group)
-2. 가상네트워크(Virtual Network)
-3. 서브넷(Subnet)
-4. 네트워크 보안 그룹(Network Security Group)
+## Microsoft 참고 문서
 
 
 > 리소스 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/azure-resource-manager/powershell-azure-resource-manager#understand-scope)
@@ -24,6 +16,15 @@ CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 �
 > 네트워크 보안 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell#create-a-network-security-group)
 
 
+
+## 예제 설명
+CSV 파일의 정보를 읽어들여, 해당 값들에 맞추어 가상머신이 생설될 Infrastructure를 선구성한다.
+CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 같다.
+
+1. 리소스그룹(Resource Group)
+2. 가상네트워크(Virtual Network)
+3. 서브넷(Subnet)
+4. 네트워크 보안 그룹(Network Security Group)
 
 ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress | nsgname | nsgrulename | port | priority
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
