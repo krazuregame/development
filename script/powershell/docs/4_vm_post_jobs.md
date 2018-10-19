@@ -1,4 +1,4 @@
-# Excute Post(Initial Setting) Script to Azure VMs  - PowerShell Example
+# Excute Post(Initial Setting) Script to Azure VMs
 
 * 실행 Code: [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/3_2_Excute_Post_Script.ps1)
 * Post Script 예제 : [Linux용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptLinux.sh), [Windows용 Script](https://github.com/krazuregame/development/blob/master/script/powershell/src/InitialScriptWindows.ps1)
