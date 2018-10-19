@@ -7,13 +7,13 @@
 ## Microsoft 참고 문서
 
 
-> 리소스 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/azure-resource-manager/powershell-azure-resource-manager#understand-scope)
+*리소스 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/azure-resource-manager/powershell-azure-resource-manager#understand-scope)
 
 
-> 가상 네트워크 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
+*가상 네트워크 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/quick-create-powershell#create-a-virtual-network)
 
 
-> 네트워크 보안 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell#create-a-network-security-group)
+*네트워크 보안 그룹 [Docs Link](https://docs.microsoft.com/ko-kr/azure/virtual-network/tutorial-filter-network-traffic-powershell#create-a-network-security-group)
 
 
 
