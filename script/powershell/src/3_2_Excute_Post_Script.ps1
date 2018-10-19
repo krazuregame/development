@@ -72,42 +72,7 @@ foreach ($csv in $csvpath){
             $status = Get-AzureRmVMExtension -ResourceGroupName $resourceGroup -VMName $vmName -Name $winscriptName           
         }
        
-        #Notification to slack
-        $getdate = Get-Date
-        
-        if($status -ne "$null")
-        {       
-            if($status.ProvisioningState -eq "Succeeded")
-            {
-                Write-Host "CustomScript is successfully excuted @ '$vmName'. Just notificated to Slack channel!"
-        
-                $payload = 
-                @{
-                    "text" = "CustomScript is successfully excuted @ '$vmName' :) `n Status: Succeeded `n Time: $getdate"
-                 }
- 
-                $webhook = Invoke-WebRequest -UseBasicParsing `
-                    -Body (ConvertTo-Json -Compress -InputObject $payload) `
-                    -Method Post `
-                    -Uri "https://hooks.slack.com/services/**********************************"
-            }
-        
-            else
-            {
-                Write-Host "CustomScript is failed to excute @ '$vmName'. Just notificated to Slack channel!"
-        
-                $payload = 
-                @{
-                    "text" = "CustomScript execution is failed :( `n Status: Failed `n Time: $getdate"
-                 }
- 
-                 $webhook = Invoke-WebRequest -UseBasicParsing `
-                    -Body (ConvertTo-Json -Compress -InputObject $payload) `
-                    -Method Post `
-                    -Uri "https://hooks.slack.com/services/**********************************"
-            }
-  
-        }
+       
 
     } -ArgumentList $csv.vmName, $csv.resourceGroup, $csv.location, $csv.os
 
