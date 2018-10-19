@@ -23,6 +23,26 @@ NetworkRG	| Korea Central	| WindowsSubnet	| 10.50.2.0/24	| DemoVnet	| 10.50.0.0/
 ## Scenario Diagram
 <img src="../../../images/Infraconfig.png" width="60%" height="60%">
 
+## Powershell 문법
+* Foreach를 통한 Array 반복 [Docs Link](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays?view=powershell-6#iterations-over-array-elements)
+~~~
+$a = 0..9
+foreach ($element in $a) {
+  $element
+}
+~~~
+~~~
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+~~~
 
 ## Powershell 코드
 
