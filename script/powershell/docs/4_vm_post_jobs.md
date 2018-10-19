@@ -86,3 +86,14 @@ $winSettings = @{"fileUris" = @($winuri); "commandToExecute" = "powershell -Exec
 Set-AzureRmVMExtension -ResourceGroupName $resourceGroup -Location $location -VMName $vmName -Name Post-Script-Windows `
 -Publisher "Microsoft.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion 1.9 -Settings $winSettings -ProtectedSettings $ProtectedSettings
 ```
+
+
+* Custom Extension 조회 / 삭제
+
+```powershell
+# Get Status of Custom Extension
+Get-AzureRmVMExtension -ResourceGroupName $resourceGroup -VMName $vmName -Name $scriptName
+
+# REMOVE VM EXTENSION
+Remove-AzureRmVMExtension -ResourceGroupName $resourceGroup -VMName $vmName -Name $scriptName
+```
