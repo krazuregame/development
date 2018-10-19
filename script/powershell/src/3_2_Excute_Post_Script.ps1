@@ -45,7 +45,7 @@ foreach ($csv in $csvpath){
         $linuxscriptName = "Post-Script-Linux"
 
         #PS1
-        $winuri = "https://moonsunscripts.blob.core.windows.net/scripts/InitialScript.ps1"
+        $winuri = "https://moonsunscripts.blob.core.windows.net/scripts/InitialScriptWindows.ps1"
         $winSettings = @{"fileUris" = @($winuri); "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File InitialScript.ps1"}
         $winProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
         $winscriptName = "Post-Script-Windows"
