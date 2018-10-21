@@ -49,11 +49,11 @@ Add-AzureRmAccount -Credential $cred -TenantId $TenantId -ServicePrincipal
 <img src="../../../images/SPN.png" width="60%" height="60%">
 
 
-### 페이지 리스트
+### Powershell 리스트
 
 기능 | 가이드
 ------|--------------------------
-Overview |[Link](./README.md)
+README |[Link](./README.md)
 SPN(Service Principal Name) Account |[Link](./docs/1_spn.md)
 Deploy Infra |[Link](./docs/2_deploy_infra.md)
 Deploy VM |[Link](./docs/3_deploy_vm.md)
