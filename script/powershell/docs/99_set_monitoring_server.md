@@ -43,4 +43,71 @@ New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 
 
 ## 원격 실행 예제
+해당 가상머신에서 다른 가상머신으로 원격실행을 하여 결과값을 받기 위해서는, 대상 가상머신들의 OS Credential 정보를 알고 있어야 한다.
+
+```powershell
+$username = 'azureadmin'
+$userpw = '*********'
+$secureuserpw = $userpw | ConvertTo-SecureString -AsPlainText -Force
+
+$oscred = New-Object pscredential ($username, $secureuserpw)
+
+혹은 json 파일로 해당 정보를 저장하여, 스크립트에서 불러와 사용한다.
+```
+
+Invoke-Command 명령어를 통하여, 원하는 명령어를 실행하여 결과값을 Return 받을 수 있다.
+
+Host파일에 저장된 가상머신 이름을 사용하여 Bulk로 실행할 수 있다.
+
+
+
+1. 대상이 Windows인 경우
+```powershell 
+Invoke-Command –ComputerName $ServerName -Credential $oscred -ScriptBlock { Get-Process }
+```
+
+2. 대상이 Linux인 경우
+```powershell
+$opt = New-PSSessionOption -SkipCACheck -SkipRevocationCheck -SkipCNCheck
+Invoke-Command -ComputerName $ServerName -Authentication Basic -SessionOption $opt -Credential $oscred -ScriptBlock { Get-Process }
+```
+
+
+* Background Job을 통한 기본 스크립트 예시
+
+```powershell
+$username = 'azureadmin'
+$userpw = '********'
+$secureuserpw = $userpw | ConvertTo-SecureString -AsPlainText -Force
+$oscred = New-Object pscredential ($username, $secureuserpw)
+
+$Serverlist = Get-Content -Path C:\Users\azureadmin\Desktop\Servername.txt
+Foreach ($Servername in $Serverlist) {
+    Start-Job -Name $ServerName -ScriptBlock { param($ServerName, $oscred)
+
+if($servername -imatch "win")
+{
+    Invoke-Command –ComputerName $ServerName -Credential $oscred -ScriptBlock { Get-Process }
+}
+
+if($servername -imatch "lin")
+{
+    $o = New-PSSessionOption -SkipCACheck -SkipRevocationCheck -SkipCNCheck
+    Invoke-Command -ComputerName $ServerName -Authentication Basic -SessionOption $o -Credential $oscred -ScriptBlock { Get-Process }
+}
+
+
+    } -ArgumentList $Servername, $oscred
+
+}
+
+#Servername.txt
+Linux-01
+Linux-02
+...
+Windows-01
+Windows-02
+...
+
+```
 
