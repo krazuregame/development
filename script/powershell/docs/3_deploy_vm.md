@@ -104,5 +104,14 @@ New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfi
 
 
 
+## 추가 실습 (모니터링 가상머신 생성)
+
+
+아래 정보에 맞추어, 추가로 가상머신을 생성한다. 모니터링 실습에 사용될 가상머신이다.
+
+
+vmname | resourcegroup | location | vmsize | nwresourceGroup | vnetName | subnetName | pipName | nicname | nsgname | osdiskname | disksize | os | publisher | offer | sku | AvailabilitySetName
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
+MonitoringVM | MonitoringRG | Korea Central | Standard_DS2_v2 | MonitoringRG | MonVnet | MonitoringSubnet | Mon-01-pip | Mon-01-nic | MonNSG | Mon-disk | 127 | linux | OpenLogic | CentOS | 7.3 | MonAVS
 
 
