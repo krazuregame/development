@@ -1,4 +1,4 @@
-﻿<#   
+<#   
 ================================================================================ 
  Name: Infrastructure_Creation_CSV.ps1 
  Purpose: Azure Infrastructure Creation 
