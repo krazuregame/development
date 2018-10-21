@@ -1,4 +1,4 @@
-﻿#모니터링 대상 서버에 winrm 관련 기본 설정이 되었는지 확인
+#모니터링 대상 서버에 winrm 관련 기본 설정이 되었는지 확인
 Start-Process "C:\windows\system32\winrm.cmd" "qc /q"
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/service @{AllowUnencrypted=`"true`"}"
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/service/auth @{Basic=`"true`"}"
