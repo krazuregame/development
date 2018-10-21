@@ -8,7 +8,9 @@
 ## 예제 설명
 Azure에서 운영중인 Linux와 Windows 가상머신에 원격실행을 할 수 있도록 가상머신을 구성한다.  
 
-<원격실행 가상머신>
+MonitoringVM에 RDP로 접속하여 Powershell을 실행한다.
+
+
 1. Powershell AzureRM 모듈 설치
 ```powershell
 #Azure Powershell Module 설치
