@@ -1,4 +1,4 @@
-# Powershell 원격실행 (Monitoring 머신 구성하기)
+# Powershell Remote 가상머신 구성
 
 * 실습 스크립트 : [Link](https://github.com/krazuregame/development/blob/master/script/powershell/src/4_Remote_VM_Configuration.ps1)
 
@@ -43,8 +43,4 @@ Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
 
-
-
-## Scenario Diagram
-<img src="../../../images/postscript.png" width="80%" height="80%"> 
 
