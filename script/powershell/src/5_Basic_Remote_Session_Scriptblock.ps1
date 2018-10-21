@@ -1,4 +1,4 @@
-﻿<#   
+<#   
 ================================================================================ 
  Name: Basic_Remote_Session_Scriptblock.ps1
  Purpose: Test Basic Remote Session between hosts
