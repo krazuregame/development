@@ -13,7 +13,7 @@
 
 
 
-#<Remote Session Host>
+#*******Remote Session Host********
 
 #Azure Powershell Module 설치
 Install-Module -Name AzureRM
@@ -24,26 +24,22 @@ winrm s winrm/config/client '@{TrustedHosts="*"}'
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/client @{AllowUnencrypted=`"true`"}"
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/service/auth @{Basic=`"true`"}"
 
-# 모니터링 서버는 TCP 연결이 빈번히 만들어지고, 닫히므로, Dynamic Port 개수와 TCP 소켓이 닫혔을 경우, Time Wait을 기본값에서 30초 이하로 줄이는 것이 필요
-Start-Process "C:\Windows\System32\netsh.exe" "int ipv4 set dynamicport tcp startport=30000 numberofports=35500"
-Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\TCPIP\Parameters -Name TcpTimedWaitDelay -Value 30 -Type Dword
-
 #모니터링 대상 서버들에 대한 NetBios 이름을 모두 C:\Windows\System32\Drivers\etc 폴더내 hosts 파일에 명시
 #Private IP 조회 스크립트
 
 Get-AzureRmNetworkInterface -ResourceGroupName $resourcegroup | ForEach { $Interface = $_.Name; $IPs = $_ | Get-AzureRmNetworkInterfaceIpConfig | Select PrivateIPAddress; Write-Host $Interface $IPs.PrivateIPAddress }
 
-#PSping을 위한 pstool 다운로드
-wget "https://download.sysinternals.com/files/PSTools.zip" -OutFile "C:\Users\azureadmin\Desktop\PSTools.zip"
-#Unzip & c:\windows\system32 폴더에 copy & 환경변수 세팅 , c:\windows\system32\PSTools
 
+#방화벽 Disable
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+
+#Ping 허용
 New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 
 
-#<Remote Session Target Host>
-<# Windows
+#*******Remote Session Target********
 
+# Windows
 #모니터링 대상서버 - 모니터링 대상 서버에 winrm 관련 기본 설정이 되었는지 확인
 Start-Process "C:\windows\system32\winrm.cmd" "qc /q"
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/service @{AllowUnencrypted=`"true`"}"
@@ -55,20 +51,18 @@ Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/service/auth @{B
 
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -Name LocalAccountTokenFilterPolicy -Value 1 -Type DWord
 
-# 가장 중요- 방화벽 끄기 (Public Off 되어야 원격실행 가능)
+# 방화벽 끄기
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 
 # Ping 허용
 New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 
-#VM 생성시 타임존 안바꿨으면 그것도 KST로 변경
+#VM 생성시 타임존 안바꿨으면 KST로 변경
 Set-TimeZone -Name "korea Standard Time"
 
-#>
 
+# Linux
 
-
-<# Linux
 # Firewall Off
 sudo systemctl stop firewalld.service
 
@@ -88,5 +82,3 @@ sudo yum -y install omi-psrp-server
 # open PSRP http 5985
 sudo sed -i "s/httpport=0/httpport=0,5985/g" /etc/opt/omi/conf/omiserver.conf
 sudo /opt/omi/bin/service_control restart
-
-#>
