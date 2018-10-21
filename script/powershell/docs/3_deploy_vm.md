@@ -21,6 +21,8 @@ CSV 파일의 예제를 통해 생성되는 Azure의 리소스들은 다음과 �
 6. 가상머신(Virtual Machine)
 
 
+테스트 계정의 제약이 있는 경우, Linux-01 머신과 Windows-01 머신 두 대만 생성하여 실습을 진행한다.
+
 vmname | resourcegroup | location | vmsize | nwresourceGroup | vnetName | subnetName | pipName | nicname | nsgname | osdiskname | disksize | os | publisher | offer | sku | AvailabilitySetName
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 Linux-01 | LinuxRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet | LinuxSubnet | Linux-01-pip | Linux-01-nic | LinuxNSG | Linux-01-disk | 127 | linux | OpenLogic | CentOS | 7.3 | LinuxAVS
@@ -107,11 +109,11 @@ New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfi
 ## 추가 실습 (모니터링 가상머신 생성)
 
 
-아래 정보에 맞추어, 추가로 가상머신을 생성한다. 모니터링 실습에 사용될 가상머신이다.
+아래 정보에 맞추어, 추가로 윈도우 가상머신을 생성한다. 모니터링 실습에 사용될 가상머신이다.
 
 
 vmname | resourcegroup | location | vmsize | nwresourceGroup | vnetName | subnetName | pipName | nicname | nsgname | osdiskname | disksize | os | publisher | offer | sku | AvailabilitySetName
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-MonitoringVM | MonitoringRG | Korea Central | Standard_DS2_v2 | MonitoringRG | MonVnet | MonitoringSubnet | Mon-01-pip | Mon-01-nic | MonNSG | Mon-disk | 127 | linux | OpenLogic | CentOS | 7.3 | MonAVS
+MonitoringVM | MonitoringRG | Korea Central | Standard_DS2_v2 | NetworkRG | DemoVnet | MonitoringSubnet | Mon-pip | Mon-nic | MonNSG | Mon-disk | 127 | windows | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | MonAVS
 
 
