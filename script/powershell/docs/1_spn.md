@@ -53,7 +53,7 @@ Add-AzureRmAccount -Credential $cred -TenantId $TenantId -ServicePrincipal
 
 기능 | 가이드
 ------|--------------------------
-README |[Link](./README.md)
+README |[Link](https://github.com/krazuregame/development/blob/master/script/powershell/README.md)
 SPN(Service Principal Name) Account |[Link](./docs/1_spn.md)
 Deploy Infra |[Link](./docs/2_deploy_infra.md)
 Deploy VM |[Link](./docs/3_deploy_vm.md)
