@@ -62,7 +62,7 @@ Custom Script Extension은 가상머신에서 스크립트를 다운로드하고
 * 공통 정보 작성 (저장소 계정 / SAS 키)
 
 ```powershell
-$storageAccountName = "moonsunscripts"
+$storageAccountName = "**********"
 $storageAccountKey = "**********************************"
 $ProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
 ```
