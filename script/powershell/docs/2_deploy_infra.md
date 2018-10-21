@@ -143,6 +143,6 @@ Foreach ($csv in $csvpath){
 
 ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress | nsgname | nsgrulename | port | priority
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
-MonRG	| Korea Central	| MonitoringSubnet	| 10.60.1.0/24	| MonVnet	| 10.60.0.0/16	| 	| 	| 	|
+MonitoringRG	| Korea Central	| MonitoringSubnet	| 10.60.1.0/24	| MonVnet	| 10.60.0.0/16	| 	| 	| 	|
 LinuxRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
 WindowsRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
