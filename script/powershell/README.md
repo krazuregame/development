@@ -21,7 +21,8 @@ Azure PowerShell은 Azure Resurce 관리를 위해 Azure Resource Manager Model�
 PowerShell은 마이크로소프트가 개발한 확장 가능한 명령 줄 인터페이스(CLI) 셸 및 스크립트 언어를 특징으로 하는 명령어 인터프리터.
 스크립트 언어는 닷넷 프레임워크 2.0을 기반으로 객체 지향에 근거해 설계.
 (https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-6.9.0)
-### Install Windows PowerShell
+
+
 Supported OS: Windows 10, Windows 8.1, 8.0, Windows 7 SP1, Windows Server 2008 R2 버전부터 PowerShell 기본 내장(ISE 버전 설치는 OS에 따라 다름)
 ### Install Azure Powershell Module
 설치 가이드 문서 : [Link](https://docs.microsoft.com/ko-kr/powershell/azure/install-azurerm-ps?view=azurermps-6.10.0)
