@@ -1,4 +1,4 @@
-﻿<#   
+<#   
 ================================================================================ 
  Name: Bulk_VirtualMachines_Creation_CSV.ps1 
  Purpose: Bulk Virtual Machines Creation 
