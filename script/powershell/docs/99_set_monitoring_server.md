@@ -4,7 +4,7 @@
 
 
 ## Microsoft 참고 문서
-* Powershell 원격실행 참고 문서 :  [Remote Command Link](https://docs.microsoft.com/ko-kr/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6), [Windows Extension Link](https://docs.microsoft.com/ko-kr/azure/virtual-machines/extensions/custom-script-windows)
+* Powershell 원격실행 참고 문서 :  [Remote Command Link](https://docs.microsoft.com/ko-kr/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6)
 * WinRM 보안 참고 문서 : [Remote Security Link](https://docs.microsoft.com/ko-kr/powershell/scripting/setup/winrmsecurity?view=powershell-6)
 
 
