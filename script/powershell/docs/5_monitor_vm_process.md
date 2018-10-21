@@ -18,5 +18,27 @@
 2. 이 예제는 Azure Log Metix에서 제공하지 않는 VM내부의 정보를 실시간으로 가져오기 위한 예제이다.
 3. InfluxDB에 Insert시에 보안을 위해서 계정 인증 사용을 권장한다.
 
+
 ## Monitor VM/Process Diagram
 <img src="../../../images/Monitoring_Diagram.png" width="80%" height="80%">
+
+
+## Slack Webhook Powershell 실행 예제 (참고)
+
+* Webhook Slack 참고 문서 : [Link](https://api.slack.com/incoming-webhooks)
+
+
+```powershell
+
+$payload = 
+        @{
+            "text" = "'$vmName' is successfully created `n Time: $getdate"
+        }
+ 
+       $webhook = Invoke-WebRequest -UseBasicParsing `
+        -Body (ConvertTo-Json -Compress -InputObject $payload) `
+        -Method Post `
+        -Uri "https://hooks.slack.com/services/***********************"
+
+
+```
