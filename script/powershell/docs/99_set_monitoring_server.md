@@ -42,7 +42,7 @@ New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 
 
 
-## 원격 실행 예제
+## 원격 실행
 해당 가상머신에서 다른 가상머신으로 원격실행을 하여 결과값을 받기 위해서는, 대상 가상머신들의 OS Credential 정보를 알고 있어야 한다.
 
 ```powershell
@@ -55,8 +55,16 @@ $oscred = New-Object pscredential ($username, $secureuserpw)
 
 
 Invoke-Command 명령어를 통하여, 원하는 명령어를 실행하여 결과값을 Return 받을 수 있다.
+명령어 참조 문서 : [Link](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-6)
+```powershell
+#예제
+Invoke-Command -ComputerName S1, S2 -ScriptBlock {Get-Process PowerShell}
 
-
+PSComputerName    Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id   ProcessName
+--------------    -------  ------    -----      ----- -----   ------     --   -----------
+S1                575      15        45100      40988   200     4.68     1392 PowerShell
+S2                777      14        35100      30988   150     3.68     67   PowerShell
+```
 
 Host파일에 저장된 가상머신 이름을 사용하여 Bulk로 실행할 수 있다.
 
