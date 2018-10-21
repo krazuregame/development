@@ -74,7 +74,7 @@ Invoke-Command -ComputerName $ServerName -Authentication Basic -SessionOption $o
 ```
 
 
-* Background Job을 통한 기본 스크립트 예시
+* 원격실행 기본 예제 스크립트
 
 ```powershell
 $username = 'azureadmin'
