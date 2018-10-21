@@ -55,6 +55,8 @@ $oscred = New-Object pscredential ($username, $secureuserpw)
 
 
 Invoke-Command 명령어를 통하여, 원하는 명령어를 실행하여 결과값을 Return 받을 수 있다.
+
+
 명령어 참조 문서 : [Link](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-6)
 ```powershell
 #예제
@@ -65,6 +67,8 @@ PSComputerName    Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id   Pr
 S1                575      15        45100      40988   200     4.68     1392 PowerShell
 S2                777      14        35100      30988   150     3.68     67   PowerShell
 ```
+
+
 
 Host파일에 저장된 가상머신 이름을 사용하여 Bulk로 실행할 수 있다.
 
