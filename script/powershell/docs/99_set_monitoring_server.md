@@ -57,9 +57,9 @@ $oscred = New-Object pscredential ($username, $secureuserpw)
 Invoke-Command 명령어를 통하여, 원하는 명령어를 실행하여 결과값을 Return 받을 수 있다.
 
 
-명령어 참조 문서 : [Link](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-6)
+* 명령어 참고 문서 : [Link](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-6)
 ```powershell
-#예제
+#Invoke-Command 예시
 Invoke-Command -ComputerName S1, S2 -ScriptBlock {Get-Process PowerShell}
 
 PSComputerName    Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id   ProcessName
