@@ -25,7 +25,7 @@ winrm s winrm/config/client '@{TrustedHosts="*"}'
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/client @{AllowUnencrypted=`"true`"}"
 Start-Process "C:\windows\system32\winrm.cmd" "set winrm/config/service/auth @{Basic=`"true`"}"
 ```
-> Azure에서 운영중인 가상머신과 주소를 조회
+> Azure에서 운영중인 가상머신과 해당 Private IP를 조회
 ```powershell
 Get-AzureRmNetworkInterface -ResourceGroupName $resourcegroup | ForEach { $Interface = $_.Name; $IPs = $_ | Get-AzureRmNetworkInterfaceIpConfig | Select PrivateIPAddress; Write-Host $Interface $IPs.PrivateIPAddress }
 ```
