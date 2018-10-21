@@ -49,13 +49,14 @@ New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 $username = 'azureadmin'
 $userpw = '*********'
 $secureuserpw = $userpw | ConvertTo-SecureString -AsPlainText -Force
-
 $oscred = New-Object pscredential ($username, $secureuserpw)
-
-혹은 json 파일로 해당 정보를 저장하여, 스크립트에서 불러와 사용한다.
 ```
+> 또는 노출을 피하기 위하여, json 파일로 해당 정보를 저장해 스크립트에서 불러와 사용한다.
+
 
 Invoke-Command 명령어를 통하여, 원하는 명령어를 실행하여 결과값을 Return 받을 수 있다.
+
+
 
 Host파일에 저장된 가상머신 이름을 사용하여 Bulk로 실행할 수 있다.
 
