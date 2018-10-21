@@ -148,3 +148,5 @@ ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress |
 NetworkRG	| Korea Central	| MonitoringSubnet	| 10.50.3.0/24	| DemoVnet	| 10.50.0.0/16	| MonPort	| MonNSG	| 3389	| 1020
 LinuxRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
 WindowsRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
+MonitoringRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
+
