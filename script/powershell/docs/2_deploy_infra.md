@@ -135,3 +135,14 @@ Foreach ($csv in $csvpath){
 
 
 
+## 추가 실습 (별도 리소스 생성)
+
+
+아래 정보에 맞추어, 추가로 리소스를 생성한다. 추후 가상머신의 리소스그룹과, 모니터링 용 실습에 사용되는 Infrastructure 이다.
+
+
+ResourceGroup | Location | Subnetname | SubnetAddress | vnetname | vnetAddress | nsgname | nsgrulename | port | priority
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
+MonRG	| Korea Central	| MonitoringSubnet	| 10.60.1.0/24	| MonVnet	| 10.60.0.0/16	| 	| 	| 	|
+LinuxRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
+WindowsRG | Korea Central	| 	| 	| 	| 	| 	| 	| 	| 
