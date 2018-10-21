@@ -13,7 +13,7 @@ MonitoringVM에 RDP로 접속하여 Powershell을 실행한다.
 
 1. Powershell AzureRM 모듈 설치
 ```powershell
-Install-Module -Name AzureRM
+Install-Module -Name AzureRM -AllowClobber
 Import-Module AzureRM
 ```
 2. 원격실행이 가능하도록 WinRM 설정
