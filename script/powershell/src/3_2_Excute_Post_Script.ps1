@@ -1,4 +1,4 @@
-﻿<#   
+<#   
 ================================================================================ 
  Name: Excute_Post_Script.ps1 
  Purpose: Post Script Excution Using Azure VM Extension 
