@@ -43,3 +43,6 @@ New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
 
 
+
+## 원격 실행 예제
+
