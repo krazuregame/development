@@ -1,7 +1,8 @@
 ## Telegraf to InfluxDB
 ### Architecture
+
 * logical diagram
-    <img src="../../images/TelegrafInfluxArchitecture.png" width="70%" height="70%">
+<img src="../../images/TelegrafInfluxArchitecture.png" width="70%" height="70%">
 
 * TIG monitoring with Telegraf Agent
     - 각 DB서버에 모니터링 데이터 수집 agent로서 telegraf를 백그라운드로 프로세스로 실행하여 모니터링 서버로 push하는 방식
@@ -11,14 +12,14 @@
     - 모니터링 서버를 통해서 다른서버를 접근할 수 없어 보안상 안전
     - 모니터링 서버에 수집 부하가 집중되는 문제를 피할 수 있음
 
-    ![](../../images/TIG1.png)
+        ![](../../images/TIG1.png)
  
 *  TIG monitoring without Telegraf Agent
     - 모니터링 서버에서 각 서버로 접속하여 get/polling 하는 방식으로 구성.
     - 모니터링 대상 서버가 추가될 때마다 agent용 프로그램들을 설치할 필요 없이 간단히 설정만 추가
     -  모니터링 서버가 보안 위험에 노출될 경우 다른 서버들로 접속이 가능한 위험 존재
 
-    ![](../../images/TIG2.png)
+        ![](../../images/TIG2.png)
 
 ## Install
 Time-Series Data Collector Version 1.8.2
