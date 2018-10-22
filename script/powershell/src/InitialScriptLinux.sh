@@ -14,7 +14,7 @@ sudo systemctl stop firewalld.service
 #sudo mkdir /data
 #sudo mount /dev/sdc1 /data
 #sleep 2
-#echo "/dev/sdc   /data ext4 defaults,noatime 1    1" >> /etc/fstab
+#echo "/dev/sdc   /data ext4 defaults,noatime,nofail 1    1" >> /etc/fstab
 
 
 #Add MS Package repository
