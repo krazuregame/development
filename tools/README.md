@@ -6,7 +6,8 @@
 
 다양한 오픈소스 모니터링 Tools 들이 있으나 최근 들어 많이 사용하고 있는 TIG(Telegraf + InfluxDB + Grafana) 를 사용하여 구축
 * InfluxData 사에서 제공하고 있는 TICK+ Grafana Architecture : 여기서 Chronograf, Kapacitor 에 대한 설명은 제외
- ![](../images/TICKGrafana.png)
+
+    ![](../images/TICKGrafana.png)
 
 ## 1. Telegraf ##
 오픈소스 시스템 모니터링 에이전트.
