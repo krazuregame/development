@@ -1,10 +1,12 @@
 ## 0. Overview ##
-어플리케이션 구성시 모니터링을 위해 구축되는 3Step
-- 어플리케이션 구성 요소(웹 서버, 데이터베이스, 로드 밸런서)
-
-1. Collector: 어플리케이션에서 유의미한 데이타들을 모니터링 데몬을 통해 수집
+어플리케이션 구성시 모니터링을 위해 구축되는 3Step 
+1. Collector: Statsd나 Telegraf등의 어플리케이션에서 유의미한 데이타들을 모니터링 데몬을 통해 수집
 2. Database: Elasticsearch나 InfluxDB와 같은 데이타 데이터베이스 저장
 3. Dashboard: Grafana나 Kibana 와 같은 도구로 시각화
+
+다양한 오픈소스 모니터링 Tools 들이 있으나 최근 들어 많이 사용하고 있는 TIG(Telegraf + InfluxDB + Grafana) 를 사용하여 구축
+* InfluxData 사에서 제공하고 있는 TICK+ Grafana Architecture : 여기서 Chronograf, Kapacitor 에 대한 설명은 제외
+ ![](../images/TICKGrafana.png)
 
 ## 1. Telegraf ##
 오픈소스 시스템 모니터링 에이전트.
@@ -44,9 +46,6 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 
 ## 3. Grafana ##
 시스템 모니터링 대시보드를 이쁘게 보여주는 툴로 시계열 데이터 베이스를 연동하여 시각화함
-* elastic 사의 ELK (Elasticsearch, Logstash, Kibana) 제품 중 elasticsearch에 indexing된 데이터의 시각화와 대시보드 구성을 위한 툴인 kibana에 영감을 받아 시작된 open source 프로젝트
-* 프론트엔드에는 nodejs, 백엔드에는 golang을 사용
-* 4.0 버전부터 알림 (alerting) 기능이 추가되어 데이터의 시각화 뿐만 아니라 관제용 대시보드로서 모든 기능 수행
 * 원하는 메트릭 지표 수집만 하면 Grafana를 통해 쉽게 시각화 가능
 * 설치가 매우 용이함
 * 연결 가능 Database
