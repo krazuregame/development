@@ -44,6 +44,9 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 
 ## 3. Grafana ##
 시스템 모니터링 대시보드를 이쁘게 보여주는 툴로 시계열 데이터 베이스를 연동하여 시각화함
+* elastic 사의 ELK (Elasticsearch, Logstash, Kibana) 제품 중 elasticsearch에 indexing된 데이터의 시각화와 대시보드 구성을 위한 툴인 kibana에 영감을 받아 시작된 open source 프로젝트
+* 프론트엔드에는 nodejs, 백엔드에는 golang을 사용
+* 4.0 버전부터 알림 (alerting) 기능이 추가되어 데이터의 시각화 뿐만 아니라 관제용 대시보드로서 모든 기능 수행
 * 원하는 메트릭 지표 수집만 하면 Grafana를 통해 쉽게 시각화 가능
 * 설치가 매우 용이함
 * 연결 가능 Database
