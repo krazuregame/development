@@ -11,8 +11,8 @@ AWS 자체 모니터링에서는 모니터링 주기를 최소 1초 간격으로
 Real-Time 기반의 게임 산업에서는 초단위 시스템 모니터링이 필요함. 
 
 ## 2. Environment 
-### 2.1 Development Environment Set-Up
+### 2.1 Development Environment Set-Up - PowerShell
 * [개발환경구축](../script/powershell/README.md)
 
-### 2.2 Monitoring Environment Set-Up
+### 2.2 Monitoring Environment Set-Up - OpenSource
 * [모니터링환경구축](../tools/README.md)
