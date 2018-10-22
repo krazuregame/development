@@ -34,7 +34,7 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
     - 많은 양의 데이터를 오랜 기간 저장하는 것은 큰 부하. datasampling을 통하여 Storage 정리 가능
     - ex) 1초 주기 수집. 한달 이후에는 1초 주기 Data가 무의미하여 1분 평균으로 datasampling 
 * Data Retention
-    - Data 보관 조기를 설정하여 Storage 경감
+    - Data 보관 주기를 설정하여 Storage 경감
 * 용어정리
     - database: measurements 집합
     - mesurement: table
