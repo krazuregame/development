@@ -37,6 +37,46 @@ Version 5.3.1 October 16, 2018
 * The default configuration sets the log file :  /var/log/grafana/grafana.log
 * The default configuration specifies an sqlite3 db :  /var/lib/grafana/grafana.db
 * Installs HTML/JS/CSS and other Grafana files :  /usr/share/grafana
+### Security
+어드민 계정과 암호는 반드시 로그인 후 변경해야 하고 유저들을 추가하여 해당 항목에 Viewer 권한을 주어 접속할수 있도록 변경
+### HTTPS/SSL Setting
+모니터링 구축 서버는 민감한 정보들을 가지고 있기 때문에 HTTPS/SSL 정보가 설정되어야 함
+
+```
+#################################### Server #################################### 
+[server] 
+# Protocol (http or https) 
+protocol = https 
+
+# The ip address to bind to, empty will bind to all interfaces 
+http_addr = 0.0.0.0 
+
+# The http port to use 
+http_port = 3000 
+
+# The public facing domain name used to access grafana from a browser 
+;domain = localhost 
+
+# Redirect to correct domain if host header does not match domain 
+# Prevents DNS rebinding attacks 
+;enforce_domain = false 
+
+# The full public facing url 
+;root_url = %(protocol)s://%(domain)s:%(http_port)s/ 
+
+# Log web requests 
+;router_logging = false 
+
+# the path relative working path 
+;static_root_path = public 
+
+# enable gzip 
+;enable_gzip = false 
+
+# https certs & key file 
+cert_file = /usr/local/ssl/crt/certificate.cer 
+cert_key = /usr/local/ssl/private/private_key.key 
+```
 
 ## Test
 ### Start & Stop
