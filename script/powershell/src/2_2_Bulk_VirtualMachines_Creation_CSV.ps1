@@ -14,26 +14,26 @@
  ================================================================================ 
 #>
 
-$csvpath = import-csv 'C:\VMconfig.csv'
+$csvpath = import-csv '~\VMconfig.csv'
 Foreach ($csv in $csvpath) {
     Start-Job -Name $csv.vmname -ScriptBlock { param ($vmName, $resourceGroup, $nwresourceGroup, $location, $vmSize, $vnetName, $pipname, $nicname, $nsgName, $osdiskname, $AvailabilitySetName, $disksize, $publisher, $offer, $sku, $os, $subnetname)
 
+
 #Login /w SPN   
-$tenantID = "*************************"
-$appid = "*************************"
-$pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
+$env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
+
+$tenantID = $env.spn.tenantID
+$appid = $env.spn.appid
+$pwd = Get-Content ~\LoginCred.txt| ConvertTo-SecureString
 $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
-#Check if Resource Group Exists
-if($resourceGroup -ne "$null")
+$createRG = Get-AzureRmResourceGroup -Name $resourceGroup -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+if($notPresent)
 {
-    $createRG = Get-AzureRmResourceGroup -Name $resourceGroup -ErrorVariable notPresent -ErrorAction SilentlyContinue
-    if($notPresent)
-    {
-          # Create a resource group
-          $createRG = New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-    }
+    # Create a resource group
+    $createRG = New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 }
 
@@ -45,8 +45,9 @@ $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $nwresourceGroup -Name
 
 
 # Create user object
-$username = 'azureadmin'
-$userpw = 'Password@123'
+$username = $env.oscred.username
+$userpw = $env.oscred.userpw
+
 $secureuserpw = $userpw | ConvertTo-SecureString -AsPlainText -Force
 $oscred = New-Object pscredential ($username, $secureuserpw)
 
