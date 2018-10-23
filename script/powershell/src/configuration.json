@@ -1,0 +1,29 @@
+﻿{
+    "oscred":
+    [
+      {
+          "username" : "azureadmin",
+          "userpw" : "Password@123"
+      },
+      {
+          "monusername" : "azureadmin",
+          "monuserpw" : "Password@123"
+      }
+
+    ],
+
+    "spn":
+     {
+         "tenantID" : "72f988bf-86*****************",
+         "appid" : "3903392b-05****************"
+     },
+     
+     "blob":
+     {
+        "storageAccountName" : "**********",
+        "storageAccountKey" : "**********************************",
+        "linuxuri" : "https://**********.blob.core.windows.net/scripts/InitialScriptLinux.sh",
+        "winuri" : "https://**********.blob.core.windows.net/scripts/InitialScriptWindows.ps1"
+
+     }
+}
