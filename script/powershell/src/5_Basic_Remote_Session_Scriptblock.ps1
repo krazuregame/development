@@ -37,6 +37,7 @@ Foreach ($ServerName in $ServerList) {
         $CheckInterval = 5
         $AlertSendTime = $null
         $IsAlertSend   = $false
+        $CpuUtilLimit  = 40     # 임계치를 넘으면 Slack 등에 Alert를 보내기 위한 수치
         
         # Background 실행 ScriptBlock 안에 function을 선언합니다..
         function SendSlack {
@@ -83,15 +84,27 @@ Foreach ($ServerName in $ServerList) {
                     $GameProcName = "win32calc"
                     $GameProcCount = (Get-Process | ? {$_.Name -eq $GameServerName}).count
 
+                    # 모니터링 하기 위한 Network Adapter의 description을 설정합니다.
+                    # PS> Get-counter –Counter "\Network Interface(*)\Bytes Received/sec" 를 하게 되면 모든 Net Interface에 대해서 출력되게 되는데 이중 사용되는 NIC의 값을 참고합니다.
+                    # 또는
+                    # PS> (Get-counter –Counter “\Network Interface(*)\Bytes Received/sec”).CounterSamples.Where({$_.CookedValue -ne 0}).InstanceName
+                    #
+                    # - Test
+                    # $ifdesc=(Get-counter –Counter “\Network Interface(*)\Bytes Received/sec”).CounterSamples.Where({$_.CookedValue -ne 0}).InstanceName
+                    $ifdesc="microsoft hyper-v network adapter _2"
+                    
+
                     $Counters = @(
                         '\processor(_total)\% processor time',
                         '\System\Processor Queue Length',
                         '\Memory\Pages/sec',
                         '\Paging File(_total)\% Usage',
                         '\Memory\Available MBytes',
-                        '\Network Adapter()\Packets/sec',
-                        '\Network Adapter()\Bytes Total/sec'
-                    )
+                        "\Network Adapter($ifdesc)\Packets/sec",
+                        "\Network Adapter($ifdesc)\Bytes Total/sec"
+                        "\Network Adapter($ifdesc)\Bytes Sent/sec"
+                        "\Network Adapter($ifdesc)\Bytes Received/sec"
+                    )                 
 
                     # 부하를 줄이기 위하여 한번에 Query합니다.
                     $status = Get-Counter -Counter $Counters
@@ -104,8 +117,10 @@ Foreach ($ServerName in $ServerList) {
                         PagesSec       =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Pages/sec"}).CookedValue);
                         PagingUsage    =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Paging File(_total)\% Usage"}).CookedValue);
                         AvailableMemory=[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Available MBytes"}).CookedValue);                        
-                        PacketsSec     =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Packets/sec"}).CookedValue);
-                        BytesTotalSec  =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Bytes Total/sec"}).CookedValue / 1MB);
+                        PacketsSec     =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.InstanceName -eq $ifdesc -AND $_.Path -match "Packets/sec"}).CookedValue);
+                        BytesTotalSec  =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.InstanceName -eq $ifdesc -AND $_.Path -match "Bytes Total/sec"}).CookedValue / 1MB);
+                        BytesSentSec   =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.InstanceName -eq $ifdesc -AND $_.Path -match "Bytes Sent/sec"}).CookedValue / 1MB);
+                        BytesRecvSec   =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.InstanceName -eq $ifdesc -AND $_.Path -match "Bytes Received/sec"}).CookedValue / 1MB);
                     }
                 } # }}} ScriptBlock                 
                 
@@ -120,7 +135,7 @@ Foreach ($ServerName in $ServerList) {
                     # 각 Data의 임계치를 정하여 문제가 발생시 또는 주기적으로 발송합니다.
 
                     # ex) CPU Utilization using slack
-                    if ($ServerStatus.ProcessTime -gt 1) {
+                    if ($ServerStatus.ProcessTime -gt $CpuUtilLimit) {
                         SendSlack "#general"  "[Performance-Alert]" "*$ServerName*" "warning" ("CPU Utili is high!! : ("+$ServerStatus.ProcessTime+"%)")
                     }
 
