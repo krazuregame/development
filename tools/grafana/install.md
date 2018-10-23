@@ -66,5 +66,6 @@ cosmos@tig-linux:~$ sudo service grafana-server status
 Test
 
 To run Grafana open your browser and go to the port you configured above, e.g. http://localhost:3000/.
+
 default login user/password : admin/admin
 
