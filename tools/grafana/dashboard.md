@@ -1,6 +1,11 @@
-## Grafana installation Requirements
+## Dashboard 구성
 
-### Grafana ports
+### DataSource 추가
+첫번째로 대쉬보드를 구성하기 전에 DataSource 를 추가해야 함
+<img src ="http://docs.grafana.org/img/docs/v52/sidemenu-datasource.png">
+
+<img src="http://docs.grafana.org/img/docs/v52/sidemenu-datasource.png">
+
 디폴트로 Grafana 다음의 network ports 를 사용함
 * HTTP port 3000
 
