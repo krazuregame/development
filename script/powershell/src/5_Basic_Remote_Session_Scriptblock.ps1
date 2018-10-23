@@ -198,14 +198,16 @@ Foreach ($ServerName in $ServerList) {
                     # 각 Data의 임계치를 정하여 문제가 발생시 또는 주기적으로 발송합니다.
 
                     # ex) CPU Utilization using slack
+                    # 고객사마다 다르지만 40%에서 Alert을 받기를 원하는 고객도 있습니다.
+                    # 보통 60% 정도를 Warning 으로 보고 80%를 Critical로 고려하시면됩니다. configruation.json 에 설정합니다.
                     if ($ServerStatus.ProcessorTime -gt $Env.CpuUtilLimit) {
                         SendSlack "#general"  "[Performance-Alert]" "*$ServerName*" "warning" ("CPU Utili is high!! : ("+$ServerStatus.ProcessorTime+"%)")
                     }
 
 
                     if ($ServerStatus.GameProcCount -eq 0) {
-                        # 모니터링 GameServer Process가 없을경우 2분마다 Alert을 보냅니다.
-                        if (  (($AlertSendTime -eq $null) -or (((Get-Date)-$AlertSendTime).Second -gt 10 )) ) {
+                        # 모니터링 GameServer Process가 없을경우 2분마다 Alert을 보냅니다. -gt {sec} 에서 운영상에서는 -gt 120 으로 설정하는것을 추천드립니다.
+                        if (  (($AlertSendTime -eq $null) -or (((Get-Date)-$AlertSendTime).Second -gt 120 )) ) {
                             if ( $IsAlertSend -eq $false ) {
                                 $AlertSendTime = (Get-Date)
                                 SendSlack "#general"  "[GameServer-Alert]" $ServerName "danger" ("*"+$ServerStatus.GameProcName+"* stopped on "+$ServerName+" at _$AlertSendTime`_.")
