@@ -9,9 +9,6 @@ Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU -Nam
 #방화벽 끄기
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 
-#Ping허용
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
-
 <#데이터 디스크 추가
 Get-Disk | Where partitionstyle -eq 'raw' | `
 Initialize-Disk -PartitionStyle MBR -PassThru | `
