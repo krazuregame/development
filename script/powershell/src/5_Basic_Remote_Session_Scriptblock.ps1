@@ -13,18 +13,10 @@
 
 
 # Define
-
-$env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json  
-$UserName = $env.oscred.username  
-$UserPW = $env.oscred.userpw 
-
 $ServerListPath = '~\Servername.txt'
 
 # Ignore all error due to excute PowerSehll command
 $ErrorActionPreference = "SilentlyContinue"
-
-$SecureUserPw = $UserPw | ConvertTo-SecureString -AsPlainText -Force
-$OsCred = New-Object pscredential ($UserName, $SecureUserPw)
 
 $ServerList = Get-Content -Path $ServerListPath
 
@@ -32,13 +24,9 @@ Foreach ($ServerName in $ServerList) {
 
     # Terminal이 종료되어도 실행을 보장하기 위하여 Background로 실행합니다.
     Start-Job -Name $ServerName -ScriptBlock { 
-        param([string]$ServerName, [string]$OsCred)
+        param([string]$ServerName)
 
-        # need to export environment config (JSON)
-        #$StoredRawData = $true
-        #$EnableWebHook = $true
-        #$CheckInterval = 5
-        #$CpuUtilLimit  = 40     # 임계치를 넘으면 Slack 등에 Alert를 보내기 위한 수치        
+        # need to export environment config (JSON)           
         $AlertSendTime = $null
         $IsAlertSend   = $false
 
@@ -72,7 +60,13 @@ Foreach ($ServerName in $ServerList) {
             $AlertTime = $null
             While($true) {
 
-                $Env = Get-Content C:\Tools\Environment.json | ConvertFrom-Json
+                # Configuration을 Load합니다. Runtime 수정이 가능하기 위하여 매번 load합니다.
+                $Env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
+                $UserName = $Env.oscred.username
+                $UserPW = $Env.oscred.userpw
+                
+                $SecureUserPw = $UserPw | ConvertTo-SecureString -AsPlainText -Force
+                $OsCred = New-Object pscredential ($UserName, $SecureUserPw)
 
                 $ServerStatus = $null
                     
@@ -87,8 +81,7 @@ Foreach ($ServerName in $ServerList) {
                     # 원격 실행
                     # GameServer의 Process Count를 체크합니다.
                     $GameProcName = $Env.ServiceName
-                    $GameProcCount = (Get-Process | ? {$_.Name -eq $GameProcName}).count
-                    #$GameProcUsedMem = Get-Counter -counter "\Process($GameProcName)\Private Bytes" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty countersamples
+                    $GameProcCount = (Get-Process | ? {$_.Name -eq $GameProcName}).count                    
 
                     # 모니터링 하기 위한 Network Adapter의 description을 설정합니다.
                     #
@@ -233,7 +226,7 @@ Foreach ($ServerName in $ServerList) {
             #Invoke-Command -ComputerName $ServerName -Authentication Basic -SessionOption $o -Credential $oscred -ScriptBlock { Get-Process }
         }        
 
-    } -ArgumentList $Servername, $oscred
+    } -ArgumentList $Servername
 
 }
 

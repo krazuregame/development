@@ -7,7 +7,7 @@
  Limitations/Prerequisite:
     * Need "VMconfig.csv" file for servernames
     * Must Run PowerShell (or ISE)  
-    * Requires PowerShell Azure Module
+    * Requires PowerShell Azure ModuleQ
  ================================================================================ 
 #>
 
@@ -24,28 +24,30 @@
 #Set-AzureRmVMExtension -ResourceGroupName $resourceGroup -Location $location -VMName $vmName -Name $winscriptName -Publisher "Microsoft.Compute" -Type "CustomScriptExtension" `
 #-TypeHandlerVersion 1.9 -Settings $winSettings -ProtectedSettings $winProtectedSettings    
 
-$csvpath = import-csv 'C:\VMconfig.csv'
+$csvpath = import-csv '~\VMconfig.csv'
 foreach ($csv in $csvpath){
     Start-Job -Name $csv.vmName { 
         param ($vmName, $resourceGroup, $location, $os) 
 
-        $tenantID = "**********************************"
-        $appid = "**********************************"
-        $pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
+        $env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
+
+        $tenantID = $env.spn.tenantID
+        $appid = $env.spn.appid
+        $pwd = Get-Content ~\LoginCred.txt| ConvertTo-SecureString
         $cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
         Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
-        $storageAccountName = "**********"
-        $storageAccountKey = "**********************************"
+        $storageAccountName = $env.blob.storageAccountName
+        $storageAccountKey = $env.blob.storageAccountKey
 
         #Shell
-        $linuxuri = "https://**********.blob.core.windows.net/scripts/InitialScriptLinux.sh"
+        $linuxuri = $env.blob.linuxuri
         $linuxSettings = @{"fileUris" = @($linuxuri); "commandToExecute" = "./InitialScriptLinux.sh"}
         $linuxProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
         $linuxscriptName = "Post-Script-Linux"
 
         #PS1
-        $winuri = "https://**********.blob.core.windows.net/scripts/InitialScriptWindows.ps1"
+        $winuri = $env.blob.winuri
         $winSettings = @{"fileUris" = @($winuri); "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File InitialScriptWindows.ps1"}
         $winProtectedSettings = @{"storageAccountName" = $storageAccountName; "storageAccountKey" = $storageAccountKey}
         $winscriptName = "Post-Script-Windows"
