@@ -51,5 +51,8 @@ New-AzureRmRoleAssignment -RoleDefinitionName $spnRole -ServicePrincipalName $ap
 
 $cred = New-object System.Management.Automation.PSCredential($appId.Guid, $securepassword)
 
+#####Copy "$appId" & "$id.TenantId" for Next Login####
 #Login using SPN with (App ID / App PW)
 #Add-AzureRmAccount -Credential $cred -TenantId $id.TenantId -ServicePrincipal
+
+
