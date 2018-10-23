@@ -70,7 +70,46 @@ cosmos@tig-linux:/var/log/influxdb$ service influxdb status
            └─29558 /usr/bin/influxd -config /etc/influxdb/influxdb.conf
 ```
 
-Test
+### Create Database
+influxdb 를 설치하면 아래와 같은 명령어로 influxdb 접속 가능
+
+```
+cosmos@tig-linux:~$ influx -precision rfc3339
+Connected to http://localhost:8086 version 1.6.4
+InfluxDB shell version: 1.6.4
+```
+
+접속하여 해당 database 생성
+```
+> create database TIG
+> show databases
+name: databases
+name
+----
+_internal
+TIG
+``` 
+
+생성한 database 에 key, value insert
+```
+> use TIG
+Using database TIG
+> INSERT cpu,host=serverA,region=us_west value=0.64
+> select * from cpu
+name: cpu
+time                           host    region  value
+----                           ----    ------  -----
+2018-10-23T03:21:27.571110443Z serverA us_west 0.64
+```
+
+DB 접속 가능한 User/ Permission 생성
+
+```
+> CREATE USER jeff WITH PASSWORD '1234' WITH ALL PRIVILEGES
+```
+
+### Test
+
 telegraf 에서 influxdb 로 모니터링 데이타가 정상 수집되고 있는지 확인
 
 ```
