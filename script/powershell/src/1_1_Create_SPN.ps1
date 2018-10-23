@@ -18,6 +18,7 @@ Login-AzureRmAccount
 
 # Select the Subscription to use
 $subscriptionid = Read-Host "Enter the Subscription Id"
+Select-AzureRmSubscription -SubscriptionId $subscriptionid
 $id = Get-AzureRmSubscription -SubscriptionId $subscriptionid
 
 # Print the subscription info.
@@ -33,7 +34,6 @@ $spn = "SPN_Login"
 $homepage = "http://localhost/$spn"
 $identifierUri = $homepage
 
-#$azureAdApplication = New-AzureRmADApplication -DisplayName $spn -HomePage $homepage -IdentifierUris $identifierUri -Password $securepassword 
 $azureAdApplication = New-AzureRmADApplication -DisplayName $spn -IdentifierUris $identifierUri -Password $securepassword 
 
 # Set Ad app id just made
