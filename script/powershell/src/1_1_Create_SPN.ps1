@@ -27,7 +27,7 @@ Write-Host "ID: "$id.Name", SubscriptionId: "$id.SubscriptionId", TenantId "$id.
 # 2. Create Azure AD Application After Setting the AD app credential / Info.
 Add-Type -Assembly System.Web
 $password = [System.Web.Security.Membership]::GeneratePassword(16,3)
-$securepassword = $password | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File ".\LoginCred.txt"
+$securepassword = $password | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File "~\LoginCred.txt"
 $securepassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
 $spn = "SPN_Login"
@@ -51,8 +51,5 @@ New-AzureRmRoleAssignment -RoleDefinitionName $spnRole -ServicePrincipalName $ap
 
 $cred = New-object System.Management.Automation.PSCredential($appId.Guid, $securepassword)
 
-#####Copy "$appId" & "$id.TenantId" for Next Login####
 #Login using SPN with (App ID / App PW)
 #Add-AzureRmAccount -Credential $cred -TenantId $id.TenantId -ServicePrincipal
-
-
