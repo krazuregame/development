@@ -21,7 +21,7 @@ $subscriptionid = Read-Host "Enter the Subscription Id"
 $id = Get-AzureRmSubscription -SubscriptionId $subscriptionid
 
 # Print the subscription info.
-Write-Host "ID: $id.name, SubscriptionId: $id.SubscriptionId, TenantId $id.TenantId"
+Write-Host "ID: "$id.Name", SubscriptionId: "$id.SubscriptionId", TenantId "$id.TenantId""
 
 # 2. Create Azure AD Application After Setting the AD app credential / Info.
 Add-Type -Assembly System.Web
@@ -43,7 +43,7 @@ $appid = $azureAdApplication.ApplicationId
 $azurespn = New-AzureRmADServicePrincipal -ApplicationId $appid
 
 # Set AD SP info.
-#$spnname = $azurespn.ServicePrincipalNames
+$spnname = $azurespn.ServicePrincipalNames
 $spnRole = "Contributor"
 
 # 4. Create a SP Role
