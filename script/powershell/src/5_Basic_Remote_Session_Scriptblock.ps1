@@ -182,7 +182,14 @@ Foreach ($ServerName in $ServerList) {
                         $ServerStatus.BytesSentSec, `
                         $ServerStatus.BytesRecvSec
                 
-                    $InfluxdbResult = Invoke-RestMethod -Headers @{Authorization=$authheader} -Uri $InfluxdbURI -Method POST -Body $postParams
+                    if ($Env.InfluxDB.Auth -eq $true) {
+                        # InfluxDB의 내부 인증을 사용하는 고객사
+                        $InfluxdbResult = Invoke-RestMethod -Headers @{Authorization=$authheader} -Uri $InfluxdbURI -Method POST -Body $postParams
+                    } else {
+                        # InfluxDB의 내부 인증을 사용하지 않는 고객사는 Auth Header를 제거합니다.
+                        $InfluxdbResult = Invoke-RestMethod -Uri $InfluxdbURI -Method POST -Body $postParams
+                    }
+                    
     
                 }
 

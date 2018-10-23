@@ -5,6 +5,7 @@
         "ConnectionString" : "xxxxxxxxxxxx"
     },
     "InfluxDB" : {
+        "Auth" : true,
         "Stored" : true,
         "User" : "user",
         "Passwd" : "passwd",
@@ -13,7 +14,7 @@
     "EnableWebHook" : true,
     "CheckInterval" : 5,
     "CpuUtilLimit"  : 40,
-    
+
     "oscred":
     [
       {
