@@ -1,4 +1,4 @@
-<#   
+<#
 ================================================================================ 
  Name: Infrastructure_Creation_CSV.ps1 
  Purpose: Azure Infrastructure Creation 
@@ -15,14 +15,18 @@
 
 
 
-$tenantID = "*************************"
-$appid = "*************************"
-$pwd = Get-Content 'C:\LoginCred.txt' | ConvertTo-SecureString
-$cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
+$env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
+
+$tenantID = $env.spn.tenantID
+$appid = $env.spn.appid
+$pwd = Get-Content ~\LoginCred.txt| ConvertTo-SecureString
+$cred = New-object System.Management.Automation.PSCredential($appid, $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
+
+
 $csvpath= @()
-$csvpath = import-csv 'C:\Infraconfig.csv'
+$csvpath = import-csv '~\Infraconfig.csv'
 
 Foreach ($csv in $csvpath) {
 
