@@ -230,24 +230,6 @@ Foreach ($ServerName in $ServerList) {
 
 }
 
-<#C:\Tools\Environment.json
-{    
-    "SqlDB" : {
-        "Stored" : true,
-        "ConnectionString" : "xxxxxxxxxxxx"
-    },
-    "InfluxDB" : {
-        "Stored" : true,
-        "User" : "user",
-        "Passwd" : "passwd",
-        "IP" : "xxx.xxx.xxx.xxx"
-    },
-    "EnableWebHook" : true,
-    "CheckInterval" : 5,
-    "CpuUtilLimit"  : 40    
-}
-#>
-
 <#Servername.txt
 Linux-01
 Linux-02
