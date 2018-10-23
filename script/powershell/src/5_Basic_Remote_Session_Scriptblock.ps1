@@ -85,14 +85,11 @@ Foreach ($ServerName in $ServerList) {
                     $GameProcCount = (Get-Process | ? {$_.Name -eq $GameServerName}).count
 
                     # 모니터링 하기 위한 Network Adapter의 description을 설정합니다.
-                    # PS> Get-counter –Counter "\Network Interface(*)\Bytes Received/sec" 를 하게 되면 모든 Net Interface에 대해서 출력되게 되는데 이중 사용되는 NIC의 값을 참고합니다.
-                    # 또는
-                    # PS> (Get-counter –Counter “\Network Interface(*)\Bytes Received/sec”).CounterSamples.Where({$_.CookedValue -ne 0}).InstanceName
                     #
-                    # - Test
-                    # $ifdesc=(Get-counter –Counter “\Network Interface(*)\Bytes Received/sec”).CounterSamples.Where({$_.CookedValue -ne 0}).InstanceName
-                    $ifdesc="microsoft hyper-v network adapter _2"
-                    
+                    # 단일 NIC를 사용할때는 아래를 사용하며
+                    # 2개 이상의 NIC를 사용할 경우에는 interface index 가 2개 이상이 되므로 분리해서 추출해야합니다.
+                    $ifindex=(Get-NetIPAddress | where {$_.AddressFamily -eq "IPv4" -and $_.InterfaceAlias -like "Ethernet*"}).InterfaceIndex
+                    $ifdesc=(Get-NetAdapter -InterfaceIndex $ifindex).InterfaceDescription.replace('#','_')
 
                     $Counters = @(
                         '\processor(_total)\% processor time',
