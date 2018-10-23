@@ -28,7 +28,7 @@ Time-Series DBMS Version 1.6.4
 1. Download the influxdb windows distribution and Unzip.
     * https://dl.influxdata.com/influxdb/releases/influxdb-1.6.4_windows_amd64.zip
 2. Create the directory `C:\Program Files\InfluxDB` 
-3. Place the telegraf.exe and the telegraf.conf config file into `C:\Program Files\InfluxDB`
+3. Place the influx.exe, influxd.exe and the influxdb.conf config file into `C:\Program Files\InfluxDB`
 4. Edit the configuration file to meet your needs
 5. Switch to the InfluxDB directory and start the application:
 
@@ -42,7 +42,7 @@ Time-Series DBMS Version 1.6.4
 * wal path : /var/lib/influxdb/wal
 * config path
     * linux os : /etc/influxdb/influxdb.conf
-    * window os : C:\"Program Files"\Telegraf\telegraf.conf
+    * window os : C:\Program Files\Influxdb\influxdb.conf
 * log path : /var/log/influxdb
 
 ## Test
@@ -59,27 +59,15 @@ cosmos@tig-linux:~$ sudo service influxdb stop
 
 status
 ```
-cosmos@tig-linux:~$ sudo service influxdb status
-● influxdb.service - InfluxDB is an open-source, distributed, time series database
-   Loaded: loaded (/lib/systemd/system/influxdb.service; enabled; vendor preset: enabled)
-   Active: active (running) since Fri 2018-10-19 10:05:43 UTC; 3s ago
+cosmos@tig-linux:/var/log/influxdb$ service influxdb status
+● influxdb.service - InfluxDB is an open-source, distributed, time series databa
+   Loaded: loaded (/lib/systemd/system/influxdb.service; enabled; vendor preset:
+   Active: active (running) since Fri 2018-10-19 10:05:43 UTC; 3 days ago
      Docs: https://docs.influxdata.com/influxdb/
  Main PID: 29558 (influxd)
     Tasks: 12 (limit: 4915)
    CGroup: /system.slice/influxdb.service
            └─29558 /usr/bin/influxd -config /etc/influxdb/influxdb.conf
-
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120427Z lvl=info msg="Starting precreation service" log_id=0BExSNaG000 service=shard-precreation check_
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120444Z lvl=info msg="Starting snapshot service" log_id=0BExSNaG000 service=snapshot
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120487Z lvl=info msg="Starting continuous query service" log_id=0BExSNaG000 service=continuous_querier
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120502Z lvl=info msg="Starting HTTP service" log_id=0BExSNaG000 service=httpd authentication=false
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120510Z lvl=info msg="opened HTTP access log" log_id=0BExSNaG000 service=httpd path=stderr
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120596Z lvl=info msg="Listening on HTTP" log_id=0BExSNaG000 service=httpd addr=[::]:8086 https=false
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120618Z lvl=info msg="Starting retention policy enforcement service" log_id=0BExSNaG000 service=retenti
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120762Z lvl=info msg="Storing statistics" log_id=0BExSNaG000 service=monitor db_instance=_internal db_r
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.120932Z lvl=info msg="Sending usage statistics to usage.influxdata.com" log_id=0BExSNaG000
-Oct 19 10:05:44 tig-linux influxd[29558]: ts=2018-10-19T10:05:44.122789Z lvl=info msg="Listening for signals" log_id=0BExSNaG000
-
 ```
 
 Test
