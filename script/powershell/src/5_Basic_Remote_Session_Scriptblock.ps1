@@ -111,7 +111,7 @@ Foreach ($ServerName in $ServerList) {
                         GameProcCount  =$GameProcCount
                         GameProcUsedMem=[decimal]("{0:n2}" -f ($status.CounterSamples.Where({$_.InstanceName -eq $GameProcName -AND $_.Path -match "Private Bytes"}).CookedValue / 1MB));
                         ProcessorTime  =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "processor time"}).CookedValue); 
-                        ProcessQueue   =[int]($status.CounterSamples.Where({$_.Path -match "Processor Queue Length"}).CookedValue);
+                        ProcessorQueueLength   =[int]($status.CounterSamples.Where({$_.Path -match "Processor Queue Length"}).CookedValue);
                         PagesSec       =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Pages/sec"}).CookedValue);
                         PagingUsage    =[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Paging File(_total)\% Usage"}).CookedValue);
                         AvailableMemory=[decimal]("{0:n2}" -f $status.CounterSamples.Where({$_.Path -match "Available MBytes"}).CookedValue);                        
@@ -142,7 +142,7 @@ Foreach ($ServerName in $ServerList) {
                         ('{0}',{1},{2},{3},{4},'{5}',{6},{7},{8},{9},{10},{11})" -f `
                         $ServerName, `
                         $ServerStatus.ProcessorTime, `
-                        $ServerStatus.ProcessQueue, `
+                        $ServerStatus.ProcessorQueueLength, `
                         $ServerStatus.PagesSec, `
                         $ServerStatus.GameProcUsedMem, `
                         $ServerStatus.GameProcCount, `
@@ -166,12 +166,12 @@ Foreach ($ServerName in $ServerList) {
                 if ($Env.InfluxDB.Stored -eq $true) {
                     #InfluxDB
                     $authheader = "Basic " + ([Convert]::ToBase64String([System.Text.encoding]::ASCII.GetBytes("$($Env.InfluxDB.User):$($Env.InfluxDB.Passwd)")))
-                    $uri_pa = "http://$($Env.InfluxDB.IP)/write?db=AzurePerf"                    
+                    $InfluxdbURI = "http://$($Env.InfluxDB.IP)/write?db=AzurePerf"                    
                     
                     $postParams = "server_status,host={0} ProcessorTime={1},ProcessorQueueLength={2},PagesSec={3},GameServerMemory={4},GameServerRunning={5},PagingUsage={6}`,PacketsSec={7},AvailableMemory={8},BytesTotalSec={9},BytesSentSec={10},BytesRecvSec={11}" -f `
                         $ServerName, `
                         $ServerStatus.ProcessorTime, `
-                        $ServerStatus.ProcessQueue, `
+                        $ServerStatus.ProcessorQueueLength, `
                         $ServerStatus.PagesSec, `
                         $ServerStatus.GameProcUsedMem, `
                         $ServerStatus.GameProcCount, `
@@ -182,7 +182,7 @@ Foreach ($ServerName in $ServerList) {
                         $ServerStatus.BytesSentSec, `
                         $ServerStatus.BytesRecvSec
                 
-                    $influxdb_pa = Invoke-RestMethod -Headers @{Authorization=$authheader} -Uri $uri_pa -Method POST -Body $postParams
+                    $InfluxdbResult = Invoke-RestMethod -Headers @{Authorization=$authheader} -Uri $InfluxdbURI -Method POST -Body $postParams
     
                 }
 
