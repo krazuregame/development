@@ -13,8 +13,10 @@
 
 
 # Define
-$UserName = '**********'
-$UserPW = '**********'
+$env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
+$UserName = $env.oscred.username
+$UserPW = $env.oscred.userpw
+
 $ServerListPath = '~\Servername.txt'
 
 # Ignore all error due to excute PowerSehll command
