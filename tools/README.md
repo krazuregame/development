@@ -61,7 +61,7 @@ Telegraf는 InfluxDB의 제작사, InfluxDB에서 제작한 시스템 모니터�
 
 ### Install & Setup Guide 
 * [Grafana 환경구축](./grafana/install.md)
-* [Grafana 대쉬보드구축](../grafana/dashboard.md)
+* [Grafana 대쉬보드구축](./grafana/dashboard.md)
 
 ## 4. All-In-One Install Guide ##
 Azure 에서 제공하는 기본 템플릿으로 해당 템플릿을 사용하면 Linux Ubuntu 14.04 LTS VM 1개에 Telegraf, InfluxDB, Grafana 가 docker container 형태로 설치됨
