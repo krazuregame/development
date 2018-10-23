@@ -31,15 +31,18 @@ Get-AzureRmNetworkInterface -ResourceGroupName $resourcegroup | ForEach { $Inter
       10.50.x.x     Linux-01          
       10.50.x.x     Windows-01              
 ```
-4. 기타 설정
+4. 기타 가능 설정
 ```powershell
 # 방화벽 Off
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 
-# ICMP ping 허용
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
-```
+#VM 타임존 KST로 변경
+Set-TimeZone -Name "korea Standard Time"
 
+#윈도우 업데이트 끄기(=레지스트리 변경)
+Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU -Name NoAutoUpdate -Value 1
+
+```
 
 
 ## 원격 실행
