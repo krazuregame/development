@@ -1,12 +1,18 @@
 
 
 ```powershell
-$location = Get-AzureRmLocation | select displayname | Out-GridView -PassThru -Title "Choose a location"
-$publisher=Get-AzureRmVMImagePublisher -Location $location.DisplayName | Out-GridView -PassThru -Title "Choose a publisher"
-$offer = Get-AzureRmVMImageOffer -Location $location.DisplayName -PublisherName $publisher.PublisherName | Out-GridView -PassThru -Title "Choose an offer"
-$sku = Get-AzureRmVMImageSku -Location $location.DisplayName -PublisherName $publisher.PublisherName -Offer $offer.Offer | select SKUS | Out-GridView -PassThru -Title "Choose an SKU"
-$title = "SKUs for location: " + $location.DisplayName + ", Publisher: " + $publisher.PublisherName + ", Offer: " + $offer.Offer + ", SKU: " + $sku.Skus
+<#Completed @ NPixel Account. No need to excute more.
+1. Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+# wait till "Registering -> Registered"
+2. Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+3. Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+#>
 
-$title
+$Resource = Get-AzureRmResource -ResourceType "Microsoft.Compute/images" -ResourceName "plogstash1-image-20181101120612"
+Move-AzureRmResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "flatformRG-central"
+
+$Resource = Get-AzureRmResource -ResourceType "Microsoft.Compute/images" -ResourceName "nes-master-image-20181101113822"
+Move-AzureRmResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "flatformRG-central"
+
 ```
 
