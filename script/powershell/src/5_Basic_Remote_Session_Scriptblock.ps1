@@ -221,6 +221,14 @@ Foreach ($ServerName in $ServerList) {
                         $isAlertSend = $false
                     }
                 }
+                
+                # 프로세스가 좀비상태에 빠졌을 때
+                # search the process parent
+                $GameProcId = (Get-Process | ? {$_.Name -eq $GameProcName}).Id
+                $parentGameProcess = (gwmi win32_process | ? processid -eq  $GameProcId).parentprocessid
+			             if (($parentGameProcess -eq $null ) 
+                    SendSlack "#general"  "[GameServer-Alert]" $ServerName "danger" ("*"+$ServerStatus.GameProcName+"* zombied on "+$ServerName+" at _$AlertSendTime`_.")              
+                }
 
                 # CheckInterval 간격으로 실행합니다.
                 Start-Sleep -Seconds $Env.CheckInterval
