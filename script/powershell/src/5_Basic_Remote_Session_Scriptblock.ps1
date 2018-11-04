@@ -226,7 +226,7 @@ Foreach ($ServerName in $ServerList) {
                 # search the process parent
                 $GameProcId = (Get-Process | ? {$_.Name -eq $GameProcName}).Id
                 $parentGameProcess = (gwmi win32_process | ? processid -eq  $GameProcId).parentprocessid
-			             if (($parentGameProcess -eq $null ) 
+	        if (($parentGameProcess -eq $null ) 
                     SendSlack "#general"  "[GameServer-Alert]" $ServerName "danger" ("*"+$ServerStatus.GameProcName+"* zombied on "+$ServerName+" at _$AlertSendTime`_.")              
                 }
 
