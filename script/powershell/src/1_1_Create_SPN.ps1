@@ -47,7 +47,7 @@ $spnname = $azurespn.ServicePrincipalNames
 $spnRole = "Contributor"
 
 # 4. Create a SP Role
-New-AzureRmRoleAssignment -RoleDefinitionName $spnRole -ServicePrincipalName $appId
+New-AzureRmRoleAssignment -RoleDefinitionName $spnRole -ServicePrincipalName "$appId"
 
 $cred = New-object System.Management.Automation.PSCredential($appId.Guid, $securepassword)
 
