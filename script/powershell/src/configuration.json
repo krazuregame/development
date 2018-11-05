@@ -1,4 +1,4 @@
-﻿{
+{
     "ServiceName" : "win32calc",
     "SqlDB" : {
         "Stored" : true,
