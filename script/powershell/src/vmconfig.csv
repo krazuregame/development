@@ -1,5 +1,7 @@
-vmname,resourcegroup,location,vmsize,nwresourceGroup,vnetName,subnetName,pipName,nicname,nsgname,osdiskname,disksize,os,publisher,offer,sku,AvailabilitySetName
-Linux-01,LinuxRG,Korea Central,Standard_DS2_v2,NetworkRG,DemoVnet,LinuxSubnet,Linux-01-pip,Linux-01-nic,LinuxNSG,Linux-01-disk,127,linux,OpenLogic,CentOS,7.3,LinuxAVS
-Linux-02,LinuxRG,Korea Central,Standard_DS2_v2,NetworkRG,DemoVnet,LinuxSubnet,Linux-02-pip,Linux-02-nic,LinuxNSG,Linux-02-disk,127,linux,OpenLogic,CentOS,7.3,LinuxAVS
-Windows-01,WindowsRG,Korea Central,Standard_DS2_v2,NetworkRG,DemoVnet,WindowsSubnet,Windows-01-pip,Windows-01-nic,WindowsNSG,Windows-01-disk,127,windows,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,WindowsAVS
-Windows-02,WindowsRG,Korea Central,Standard_DS2_v2,NetworkRG,DemoVnet,WindowsSubnet,Windows-02-pip,Windows-02-nic,WindowsNSG,Windows-02-disk,127,windows,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,WindowsAVS
+vmname,resourcegroup,location,vmsize,nwresourceGroup,vnetName,subnetName,publicip,privateip,nsgname,customimage,imageresourcegroup,imagename,numdatadisk,os,disksize,publisher,offer,sku,AvailabilitySetName,bootdiagresourcegroup,bootdiagstoragename
+Linux-01,LinuxRG,Korea Central,Standard_DS2_v2,NetworkRG-partner,Demo-Vnet,Linux-Subnet,y,10.10.1.10,LinuxNSG,n,,,,linux,127,OpenLogic,CentOS,7.3,LinuxAVS,LinuxRG-partner,linuxbootdiagpowershell
+Linux-02,LinuxRG,Korea Central,Standard_DS2_v2,NetworkRG-partner,Demo-Vnet,Linux-Subnet,y,10.10.1.11,LinuxNSG,n,,,,linux,127,OpenLogic,CentOS,7.3,LinuxAVS,LinuxRG-partner,linuxbootdiagpowershell
+Windows-01,WindowsRG,Korea Central,Standard_DS2_v2,NetworkRG-partner,Demo-Vnet,Windows-Subnet,y,10.10.2.10,WindowsNSG,n,,,,windows,127,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,WindowsAVS,LinuxRG-partner,linuxbootdiagpowershell
+Windows-02,WindowsRG,Korea Central,Standard_DS2_v2,NetworkRG-partner,Demo-Vnet,Windows-Subnet,y,10.10.2.11,WindowsNSG,n,,,,windows,127,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,WindowsAVS,LinuxRG-partner,linuxbootdiagpowershell
+Linux-03,LinuxRG,Korea Central,Standard_DS2_v2,NetworkRG-partner,Demo-Vnet,Linux-Subnet,n,10.10.1.20,LinuxNSG,y,LinuxRG-partner,Linux-image,4,linux,127,,,,LinuxAVS,LinuxRG-partner,linuxbootdiagpowershell
+Linux-04,LinuxRG,Korea Central,Standard_DS2_v2,NetworkRG-partner,Demo-Vnet,Linux-Subnet,n,10.10.1.21,LinuxNSG,y,LinuxRG-partner,Linux-image,4,linux,127,,,,LinuxAVS,LinuxRG-partner,linuxbootdiagpowershell
