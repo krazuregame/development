@@ -16,8 +16,7 @@
 
 $csvpath = import-csv '~\VMconfig.csv'
 Foreach ($csv in $csvpath) {
-    Start-Job -Name $csv.vmname -ScriptBlock { param ($vmName, $resourceGroup, $nwresourceGroup, $location, $vmSize, $vnetName, $pipname, $nicname, $nsgName, $osdiskname, $AvailabilitySetName, $disksize, $publisher, $offer, $sku, $os, $subnetname)
-
+    Start-Job -Name $csv.vmname -ScriptBlock { param ($vmName, $resourceGroup, $nwresourceGroup, $location, $vmSize, $vnetName, $pipname, $nicname, $nsgName, $osdiskname, $AvailabilitySetName, $disksize, $publisher, $offer, $sku, $os, $subnetname, $publicip, $privateip, $customimage, $numdatadisk, $bootdiagresourcegroup, $StorageAccountName)
 
 #Login /w SPN   
 $env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
@@ -25,7 +24,7 @@ $env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
 $tenantID = $env.spn.tenantID
 $appid = $env.spn.appid
 $pwd = Get-Content ~\LoginCred.txt| ConvertTo-SecureString
-$cred = New-object System.Management.Automation.PSCredential("$appid", $pwd)
+$cred = New-object System.Management.Automation.PSCredential($appid, $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
 
 $createRG = Get-AzureRmResourceGroup -Name $resourceGroup -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -48,69 +47,117 @@ $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $nwresourceGroup -Name
 $username = $env.oscred.username
 $userpw = $env.oscred.userpw
 
-$secureuserpw = $userpw | ConvertTo-SecureString -AsPlainText -Force
+$secureuserpw = "$userpw" | ConvertTo-SecureString -AsPlainText -Force
 $oscred = New-Object pscredential ($username, $secureuserpw)
 
 # Create a public IP address
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location -Name $pipName -AllocationMethod Static
-$pip = Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Name $pipName
-
-
-#Check if AVS Exists
-if($AvailabilitySetName -ne "$null")
+if($publicip -eq "y")
 {
-    $createAS = Get-AzureRMAvailabilitySet -ResourceGroupName $resourcegroup -Name $AvailabilitySetName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-
-    if($notPresent)
-    {
-        # Create a AVS : Availability Set FD:2/UD:5
-        $createAS = New-AzureRmAvailabilitySet -Location $location -Name $AvailabilitySetName -ResourceGroupName $resourceGroup -Sku aligned -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5
-    }
-
+    # Create a public IP address
+    $pipname = $vmname+"-pip"
+    $pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location -Name $pipName -AllocationMethod Static
+    $pip = Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Name $pipName
 }
-
-
+else
+{
+    $pip = $null
+}
 #Get AVS info.
 $GetAVS = Get-AzureRmAvailabilitySet -Name $AvailabilitySetName -ResourceGroupName $resourceGroup
-
 $Subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -name $subnetname
+
+$nicname = $vmname+"-nic"
 
 # Create a virtual network card and associate with public IP address and NSG
 $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
-  -SubnetId $Subnet.Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+  -SubnetId $Subnet.Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -PrivateIpAddress $privateip
 
+$osdiskname = $vmname+"-osdisk"
 
-
-if($os -eq "windows")
+if($customimage -eq "n")
 {
-    # Create a virtual machine configuration
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
-    $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
-    $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $vmName -Credential $oscred -ProvisionVMAgent
-    $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+        if($os -eq "windows")
+        {
+            # Create a virtual machine configuration
+            $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+            $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
+            $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $vmName -Credential $oscred -ProvisionVMAgent
+            $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
+            $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
-    # Create a virtual machine
-    New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+            # Create a virtual machine
+            New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+        }
+
+        if($os -eq "linux")
+        {
+            # Create a virtual machine configuration
+            $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+            $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
+            $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName $vmName -Credential $oscred
+            $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
+            $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+            # Create a virtual machine
+            New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+        }
+
 }
 
-if($os -eq "linux")
+
+else
 {
-    # Create a virtual machine configuration
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
-    $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $publisher -Offer $offer -Skus $sku -Version latest
-    $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName $vmName -Credential $oscred
-    $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+    $image = Get-AzureRmImage -ImageName $imagename -ResourceGroupName $imageresourcegroup
+      
+          if($os -eq "windows")
+        {
+            $image = Get-AzureRmImage -ImageName $imagename -ResourceGroupName $imageresourcegroup
+            $vmConfig = New-AzureRmVMConfig -VMName $vmname -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+            $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -Id $image.id
+            $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -CreateOption FromImage -StorageAccountType Premium_LRS -Name $osdiskname -DiskSizeInGB $disksize -Caching ReadWrite
+            $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -windows -ComputerName $vmName -Credential $oscred -ProvisionVMAgent
+            $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+            
+            for($i=0; $i -lt $numdatadisk; $i++){
+            $datadiskname = $vmName+"-datadisk"+"-$i"
+            $vmConfig = Add-AzureRmVMDataDisk -VM $vmConfig -Name $datadiskname -CreateOption FromImage -StorageAccountType Premium_LRS -Lun $i -Caching ReadOnly
+            }
 
-    # Create a virtual machine
-    New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+            $vmConfig = Set-AzureRmVMBootDiagnostics -VM $VMConfig -Enable -ResourceGroupName $bootdiagresourcegroup -StorageAccountName $StorageAccountName
+
+            New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+        }
+
+        if($os -eq "linux")
+        {
+            $image = Get-AzureRmImage -ImageName $imagename -ResourceGroupName $imageresourcegroup
+            $vmConfig = New-AzureRmVMConfig -VMName $vmname -VMSize $vmSize -AvailabilitySetId $GetAVS.Id
+            $vmConfig = Set-AzureRmVMSourceImage -VM $vmconfig -Id $image.id
+            $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -CreateOption FromImage -StorageAccountType Premium_LRS -Name $osdiskname -DiskSizeInGB $disksize -Caching ReadWrite
+            $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName $vmName -Credential $oscred
+            $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+            
+            for($i=0; $i -lt $numdatadisk; $i++){
+            $datadiskname = $vmName+"-datadisk"+"-$i"
+            $vmConfig = Add-AzureRmVMDataDisk -VM $vmConfig -Name $datadiskname -CreateOption FromImage -StorageAccountType Premium_LRS -Lun $i -Caching ReadOnly
+            }
+
+            $vmConfig = Set-AzureRmVMBootDiagnostics -VM $VMConfig -Enable -ResourceGroupName $bootdiagresourcegroup -StorageAccountName $StorageAccountName
+
+            New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+        }
+
 }
 
 
 
-} -ArgumentList $csv.vmName, $csv.resourceGroup, $csv.nwresourceGroup, $csv.location, $csv.vmSize, $csv.vnetName, $csv.pipname, $csv.nicname, $csv.nsgName, $csv.osdiskname, $csv.AvailabilitySetName, $csv.disksize, $csv.publisher, $csv.offer, $csv.sku, $csv.os, $csv.subnetname
+
+} -ArgumentList $csv.vmName, $csv.resourceGroup, $csv.nwresourceGroup, $csv.location, $csv.vmSize, $csv.vnetName, $csv.pipname, $csv.nicname, $csv.nsgName, $csv.osdiskname, $csv.AvailabilitySetName, $csv.disksize, $csv.publisher, $csv.offer, $csv.sku, $csv.os, $csv.subnetname, $csv.publicip, $csv.privateip, $csv.customimage, $csv.numdatadisk, $csv.bootdiagresourcegroup, $csv.StorageAccountName
 
 } 
+
+
+
 
 
