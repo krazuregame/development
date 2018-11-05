@@ -17,5 +17,7 @@ $env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
 $tenantID = $env.spn.tenantID
 $appid = $env.spn.appid
 $pwd = Get-Content ~\LoginCred.txt| ConvertTo-SecureString
-$cred = New-object System.Management.Automation.PSCredential("$appid", "$pwd")
+$cred = New-object System.Management.Automation.PSCredential($appid, $pwd)
 Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
+
+
