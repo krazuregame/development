@@ -102,10 +102,11 @@ if($customimage -eq "n")
             $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $vmName -Credential $oscred -ProvisionVMAgent
             $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
             $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
-    
+            $vmConfig = Set-AzureRmVMBootDiagnostics -VM $VMConfig -Enable -ResourceGroupName $bootdiagresourcegroup -StorageAccountName $bootdiagstoragename
+            
             # Create a virtual machine
             New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
-            Remove-AzureRmVMExtension -ResourceGroupName $resourceGroup -VMName $vmname -Name BGInfo -Force
+            
         }
 
         if($os -eq "linux")
@@ -116,7 +117,8 @@ if($customimage -eq "n")
             $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName $vmName -Credential $oscred
             $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name "$osdiskname" -DiskSizeInGB $disksize -CreateOption FromImage -Caching ReadWrite -StorageAccountType Premium_LRS
             $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
-
+            $vmConfig = Set-AzureRmVMBootDiagnostics -VM $VMConfig -Enable -ResourceGroupName $bootdiagresourcegroup -StorageAccountName $bootdiagstoragename
+            
             # Create a virtual machine
             New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
         }
@@ -141,10 +143,10 @@ else
             $vmConfig = Add-AzureRmVMDataDisk -VM $vmConfig -Name $datadiskname -CreateOption FromImage -StorageAccountType Premium_LRS -Lun $i -Caching ReadOnly
             }
 
-            #$vmConfig = Set-AzureRmVMBootDiagnostics -VM $VMConfig -Enable -ResourceGroupName $bootdiagresourcegroup -StorageAccountName $bootdiagstoragename
+            $vmConfig = Set-AzureRmVMBootDiagnostics -VM $VMConfig -Enable -ResourceGroupName $bootdiagresourcegroup -StorageAccountName $bootdiagstoragename
             
             New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
-            Remove-AzureRmVMExtension -ResourceGroupName $resourceGroup -VMName $vmname -Name BGInfo -Force
+            
         }
 
         if($os -eq "linux")
