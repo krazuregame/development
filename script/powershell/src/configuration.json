@@ -16,18 +16,10 @@
     "CpuUtilLimit"  : 40,
 
     "oscred":
-    [
-      {
+     {
           "username" : "azureadmin",
           "userpw" : "Password@123"
       },
-      {
-          "monusername" : "azureadmin",
-          "monuserpw" : "Password@123"
-      }
-
-    ],
-
     "spn":
      {
          "tenantID" : "72f988bf-86*****************",
