@@ -101,4 +101,4 @@ foreach ($vm in $vms){
 
 }
 
-$obj | Export-Csv -append -Path C:\Users\molee\Desktop\vminfo.csv -Encoding UTF8 -NoTypeInformation 
+$obj | Export-Csv -append -Path C:\Users\molee\Desktop\vminfo.csv -NoTypeInformation 
