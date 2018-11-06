@@ -48,10 +48,13 @@ foreach ($vm in $vms){
 
     $dip = $nic.IPConfigurations.PrivateIpAddress
 
-    $pipname = $nic.IPConfigurations.PublicIpAddress.Id.Split("/")[-1]
-    $pip = (Get-AzureRmPublicIpAddress -ResourceGroupName $vm.ResourceGroupName -name $pipname).IpAddress
-    if($pip -eq $null){$pip = "No"}
-
+    $pip = "No"
+    if($nic.IPConfigurations.PublicIpAddress -ne $null)
+    {
+        $pipname = $nic.IPConfigurations.PublicIpAddress.Id.Split("/")[-1]
+        $pip = (Get-AzureRmPublicIpAddress -ResourceGroupName $vm.ResourceGroupName -name $pipname).IpAddress
+    }
+   
 
     $vnetname = $nic.IpConfigurations.subnet.id.split("/")[-3]
     $subnetname = $nic.IpConfigurations.subnet.id.split("/")[-1]
@@ -98,4 +101,4 @@ foreach ($vm in $vms){
 
 }
 
-$obj | Export-Csv -append -Path C:\Users\molee\Desktop\testExportVMinfo.csv -Encoding UTF8 -NoTypeInformation 
+$obj | Export-Csv -append -Path C:\Users\molee\Desktop\vminfo.csv -Encoding UTF8 -NoTypeInformation 
