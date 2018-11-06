@@ -1,18 +1,29 @@
 
 
 ```powershell
-<#Completed @ NPixel Account. No need to excute more.
-1. Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
-# wait till "Registering -> Registered"
-2. Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
-3. Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
-#>
+$csvpath = import-csv 'C:\Users\molee\Desktop\vminfo.csv'
+Foreach ($csv in $csvpath) {
+    Start-Job -Name $csv.vmname -ScriptBlock { param ($ResourceGroupName, $NICName)
 
-$Resource = Get-AzureRmResource -ResourceType "Microsoft.Compute/images" -ResourceName "plogstash1-image-20181101120612"
-Move-AzureRmResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "flatformRG-central"
+$env = Get-Content -Raw -Path '~\configuration.json' | ConvertFrom-Json
 
-$Resource = Get-AzureRmResource -ResourceType "Microsoft.Compute/images" -ResourceName "nes-master-image-20181101113822"
-Move-AzureRmResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "flatformRG-central"
+$tenantID = $env.spn.tenantID
+$appid = $env.spn.appid
+$pwd = Get-Content '~\LoginCred.txt'| ConvertTo-SecureString
+$cred = New-object System.Management.Automation.PSCredential($appid, $pwd)
+Add-AzureRmAccount -Credential $cred -TenantID $tenantId -ServicePrincipal
+
+$nic = Get-AzureRmNetworkInterface -ResourceGroupName $ResourceGroupName `
+    -Name $NICName
+
+$nic.EnableAcceleratedNetworking = $true
+
+$nic | Set-AzureRmNetworkInterface
+
+} -ArgumentList $csv.ResourceGroupName, $csv.NICName
+}
+
+
 
 ```
 
