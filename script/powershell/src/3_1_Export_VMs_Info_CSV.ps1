@@ -68,7 +68,7 @@ foreach ($vm in $vms){
 
     $ANstatus = $nic.EnableAcceleratedNetworking
 
-    if($ANstatus -eq $null){$ANstatus = "No"}
+    if($ANstatus -eq $false){$ANstatus = "No"}
     else{$ANstatus = "Yes"}
     
     $pipFQDN = (Get-AzureRmPublicIpAddress -ResourceGroupName $vm.ResourceGroupName -name $pipname).DnsSettings.Fqdn
