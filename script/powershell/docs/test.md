@@ -1,19 +1,16 @@
 
 
 ```powershell
-# EA Enroll Number
-$enrollmentNo = "********"
 
-# EA Portal Access Key
-$accesskey = "****************" 
-$authHeaders = @{"authorization"="bearer $accesskey"} 
-
+$enrollmentNo = "50188719"
 $date = get-date
 $period= $date.ToString("yyyyMM")
-
-# Credit Start Date
 $startperiod = "201810"
+$accesskey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiNTAxODg3MTkiLCJJZCI6IjI0Mzk3NzEzLWFlZjYtNDEwMS05YTgwLWYyMjk3MjFkMThjNiIsIlJlcG9ydFZpZXciOiJJbmRpcmVjdEVudGVycHJpc2UiLCJQYXJ0bmVySWQiOiIiLCJEZXBhcnRtZW50SWQiOiIiLCJBY2NvdW50SWQiOiIiLCJpc3MiOiJlYS5taWNyb3NvZnRhenVyZS5jb20iLCJhdWQiOiJjbGllbnQuZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiZXhwIjoxNTU2NTMwNjIxLCJuYmYiOjE1NDA4MDU4MjF9.YWJLmj8RuxGWaC0TlhNXdgMiW1cuCrpqh90CyoOXCqwTXGslEiVCYD4rvJho2PYPnVXwBW1z-h5xWdKuyQdbDIj1Vb2K-nGEAKkrcAhwhLKporxevudbL7USo_pJ3Aa_0Gz-55UPivkODr-rViDEIuAgQPipQAJ0ObJXrLt7gAMIk8FCRWigZo7CScI98cYnTuhpILTwKsmipp1FqiKfvczo1glydu8HLhmj7UDB-TMxqt6slaVUHCxGOxLKoEkV9Iz8S6I6YyMnv8BD2X2Q8c5XlSsbfU1_bHQ4DufLhmtiv_HdYzCWw7bHXVgGg1nJvy2g8yAQ9T8pTHMUeXFB9w" 
+$authHeaders = @{"authorization"="bearer $accesskey"} 
 
+
+$startperiod = "201810"
 $totalUrl = "https://consumption.azure.com/v2/enrollments/$enrollmentNo/billingperiods/$startperiod/balancesummary"
 $total = Invoke-WebRequest $totalUrl -Headers $authHeaders -UseBasicParsing
 $total = $total.Content | ConvertFrom-Json 
@@ -35,8 +32,6 @@ $summary.endingBalance
 
 # 해당 월 Credit 사용 금액 
 $summary.utilized
-
-# 총 사용금액
 #>
 
 
@@ -46,59 +41,14 @@ $c = $summary.endingBalance.ToString('N0')
 $d = $summary.utilized.ToString('N0')
 $e = ($b-$c).ToString('N0')
 
-$row ="
-    </tr>
-    <th> $a</th>
-    <th> $b Won</th>
-    <th> $c Won</th>
-    <th> $d Won</th>
-    <th> $e Won</th>
-    </tr>
-    "
 
-$report = "<html>
-<style>
-{font-family: Arial; font-size: 15pt;}
-TABLE{border: 1px solid black; border-collapse: collapse; font-size: 13pt;}
-TH{border: 1px solid black; background: #ffffff; padding: 5px; color: #000000;}
-TD{border: 1px solid black; padding: 5px; }
-</style>
-<h2>Azure Credit Daily Report</h2>
-<table>
-<tr>
-<th>Date</th>
-<th>Total Amount</th>
-<th>Current Balance</th>
-<th>This Month Usage</th>
-<th>Total Usage</th>
-</tr>
-$row
-</table>
-<tr>
-<br />For more information, please check the EA Portal below.
-<br /><a href='https://ea.azure.com' target='_blank'> https://ea.azure.com </a>
-<br /><br />Sent at $date
-"
+$uri = "http://rocket.npixel.co.kr/hooks/Zdx4CCSReKgN23wiw/dtCGozaNPAA4QaCQyiCnhnpcNQCA7BSrkjqmFmsy3nMuKk95"
 
-#$report | add-Content "~\DailyReport-$today.html" 
-#https://docs.microsoft.com/ko-kr/azure/sendgrid-dotnet-how-to-send-email
-
-# SendGrid Username
-$Username ="***********@azure.com"
-# SendGrid Password
-$Password = ConvertTo-SecureString "*********" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential $Username, $Password
-
-$SMTPServer = "smtp.sendgrid.net"
-$EmailFrom = "No-reply@npixel.com"
-
-[string[]]$EmailTo = "*****@npixel.co.kr", "molee@microsoft.com"
-
-$Subject = "Azure Credit Balance - Daily Report"
-$Body = $report
-
-Send-MailMessage -smtpServer $SMTPServer -Credential $credential -Usessl -Port 587 -from $EmailFrom -to $EmailTo -subject $Subject -Body $Body -BodyAsHtml
-
+$payload = @{
+    "text" = "Date:$a `n Total Credit:$b `n Current Credit:$c `n Monthly Usage:$d `n Total Usage:$e"
+    "channel" = "#fgt_cloudtest"
+}
+Invoke-WebRequest -uri $uri -body $payload -Method Post -UseBasicParsing
 
 ```
 
