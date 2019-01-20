@@ -4,10 +4,11 @@
  
 
 # Image검색 (https://hub.docker.com/)
+```bash
 [user1@ip-10-0-0-151 ~]$ sudo docker search hello-world
 NAME                                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 hello-world                               Hello World! (an example of minimal Docker...   206       [OK]
-...
+```
  
 
 # Image 받기
