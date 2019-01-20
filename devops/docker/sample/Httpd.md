@@ -38,6 +38,7 @@ cede8845a9d6        httpd               "httpd-foreground"   4 seconds ago      
 ```
 
 ### 컨테이너 정보조회 (IP, Port)
+```
 root@cosmos:~# docker inspect httpd24
 [
 {
@@ -98,6 +99,7 @@ exit
 ``` 
 
 ## 컨테이너 파일 복사
+```
 // Copy File from Container inside
 cosmos ~ # docker cp httpd24:/usr/local/apache2/htdocs/index.html ./
 cosmos ~ # cat index.html
@@ -109,11 +111,11 @@ cosmos ~ # cat index.html
   
 // Copy Local File into Container
 docker cp index.html httpd24:/usr/local/apache2/htdocs/index.html
- 
+```
 
- 
 
-컨테이너 정지 / 재기동
+## 컨테이너 정지 / 재기동
+```
 cosmos ~ # docker stop httpd24
 httpd24
   
@@ -122,9 +124,10 @@ httpd24
   
 cosmos ~ # curl 172.17.0.3
 <html><body><h1>It works very nicely!</h1></body></html>
- 
+``` 
 
-컨테이너 변경사항저장
+## 컨테이너 변경사항저장
+```
 cosmos ~ # docker images | grep httpd
 httpd                                                    latest              d595a4011ae3        2 weeks ago         178 MB
  
@@ -135,26 +138,29 @@ sha256:0457fece9ff2f560358efdc15c578efb1cc681d0c3c0f5d2064600a1ee40c3cf
 cosmos ~ # docker images | grep httpd
 httpd                                                    2.4-20180919     0457fece9ff2        5 seconds ago       178 MB
 httpd                                                    latest              94af1f614752        2 months ago        178 MB
- 
+``` 
 
  
 
-컨테이너 삭제
+## 컨테이너 삭제
+```
 cosmos ~ # docker stop httpd24
 httpd24
   
 cosmos:~# docker rm httpd24
 httpd24
- 
+``` 
 
-이미지삭제
+## 이미지삭제
+```
 root@cosmos:~# docker rmi httpd:latest
 ...
 Deleted: ff978d850939f8af21e7ff9c5a276a7dcc49cb588bc957bd6c307b372cb375c9
 Deleted: 3059b48205226912642a74158165aa3d828760fe65ec01cf132f1553aae1c133
- 
+``` 
 
-컨테이너 기동(OS Reboot 시 자동 실행)
+## 컨테이너 기동(OS Reboot 시 자동 실행)
+```
 cosmos ~ # docker run -d --restart unless-stopped --name httpd24 httpd:2.4.34-20180919
 1f504e5656dcf87ad305e43421b0711e7ca0061872a6be0b771d28b55316dc21
-
+```
