@@ -1,9 +1,9 @@
-주요내용
+# 주요내용
 Apache HTTPD 이미지를 이용한 Webserver Container 실행 및 재기동, 삭제 등
 
  
-
-HTTPD 이미지 받아오기 - Docker Hub에서 검색
+## HTTPD 이미지 받아오기 - Docker Hub에서 검색
+```
 root@cosmos:~# docker pull httpd
 Using default tag: latest
 latest: Pulling from library/httpd
@@ -22,18 +22,22 @@ d8238a7ed1a6: Pull complete
 cb604ab7d359: Pull complete
 Digest: sha256:3eae43b977887f7f660c640ba8477dc1af1626d757ff1a7ddba050418429f2f6
 Status: Downloaded newer image for httpd:latest
- 
+``` 
 
-이미지 실행
+## 이미지 실행
+```
 root@cosmos:~# docker run -d --name httpd24 httpd
 cede8845a9d6fe6c62c39b8001d2bf6b26b8c624180fa04ae9ac006c7a1a341c
- 
+``` 
 
-컨테이너 확인
+### 컨테이너 확인
+```
 root@cosmos:~# docker ps
 CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS               NAMES
 cede8845a9d6        httpd               "httpd-foreground"   4 seconds ago       Up 3 seconds        80/tcp              httpd24
-컨테이너 정보조회 (IP, Port)
+```
+
+### 컨테이너 정보조회 (IP, Port)
 root@cosmos:~# docker inspect httpd24
 [
 {
@@ -75,24 +79,26 @@ root@cosmos:~# docker inspect httpd24
     }
 }
 ]
- 
+``` 
 
-어플리케이션 호출
+## 어플리케이션 호출
+```
 root@cosmos:~# curl 172.17.0.2
 <html><body><h1>It works!</h1></body></html>
- 
+``` 
 
-컨테이너 접속 변경
+## 컨테이너 접속 변경
+```
 cosmos ~ # docker exec -ti httpd24 /bin/bash
 root@f38e2dbac897:/usr/local/apache2#
 root@f38e2dbac897:/usr/local/apache2# ls htdocs/
 index.html
 root@f38e2dbac897:/usr/local/apache2# exit
 exit
- 
+``` 
 
-컨테이너 파일 복사
-# Copy File from Container inside
+## 컨테이너 파일 복사
+// Copy File from Container inside
 cosmos ~ # docker cp httpd24:/usr/local/apache2/htdocs/index.html ./
 cosmos ~ # cat index.html
 <html><body><h1>It works!</h1></body></html>
@@ -101,7 +107,7 @@ cosmos ~ # echo '<html><body><h1>It works very nicely!</h1></body></html>' > ind
 cosmos ~ # cat index.html
 <html><body><h1>It works very nicely!</h1></body></html>
   
-# Copy Local File into Container
+// Copy Local File into Container
 docker cp index.html httpd24:/usr/local/apache2/htdocs/index.html
  
 
