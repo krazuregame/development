@@ -13,16 +13,18 @@ public class Main
 ```
 
 ### Local Build 
+```
 cosmos@cosmosdev2:~/work/java$ javac Main.java
 cosmos@cosmosdev2:~/work/java$ java Main
 Hello, World~~~!!!!
-
+```
 
 ### Docker Build by CMD 
+```
 cosmos@cosmosdev2:~/work/java$ docker run --rm -v $PWD:/app -w /app java:8 javac Main.java
 cosmos@cosmosdev2:~/work/java$ docker run --rm -v $PWD:/app -w /app java:8 java Main
 Hello, World~~~!!!!
-
+```
 
 ### Docker Build by Dockerfile
 ```
@@ -33,8 +35,9 @@ COPY . /var/www/java
 WORKDIR /var/www/java
 RUN javac Main.java
 CMD ["java", "Main"]
-
+```
 // Docker Build from Docker file
+```
 cosmos@cosmosdev2:~/work/java$ docker build -t java-app .
 Sending build context to Docker daemon  4.096kB
 Step 1/5 : FROM java:8
@@ -55,8 +58,9 @@ Removing intermediate container ce245f537241
  ---> 46a5502e729a
 Successfully built 46a5502e729a
 Successfully tagged java-app:latest
-
+```
 // Docker Run from local image
+```
 cosmos@cosmosdev2:~/work/java$ docker run java-app
 Hello, World~~~!!!!
 ```
