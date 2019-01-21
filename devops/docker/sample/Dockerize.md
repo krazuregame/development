@@ -27,8 +27,9 @@ Hello, World~~~!!!!
 ```
 
 ### Docker Build by Dockerfile
+
+#### Make Dockerfile
 ```
-// Make Dockerfile
 cosmos@cosmosdev2:~/work/java$ cat Dockerfile
 FROM java:8
 COPY . /var/www/java
@@ -36,7 +37,7 @@ WORKDIR /var/www/java
 RUN javac Main.java
 CMD ["java", "Main"]
 ```
-// Docker Build from Docker file
+#### Docker Build from Docker file
 ```
 cosmos@cosmosdev2:~/work/java$ docker build -t java-app .
 Sending build context to Docker daemon  4.096kB
@@ -59,7 +60,7 @@ Removing intermediate container ce245f537241
 Successfully built 46a5502e729a
 Successfully tagged java-app:latest
 ```
-// Docker Run from local image
+#### Docker Run from local image
 ```
 cosmos@cosmosdev2:~/work/java$ docker run java-app
 Hello, World~~~!!!!
