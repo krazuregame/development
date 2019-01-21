@@ -1,4 +1,4 @@
-# Sample Java Applicatioj - Hello World
+# Sample Java Application - Hello World
 
 
 ## Main.java(Hello world Application)
